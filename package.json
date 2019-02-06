@@ -58,7 +58,12 @@
       "eslint:recommended",
       "@vue/airbnb"
     ],
-    "rules": {},
+    "rules": {
+      "semi": ["error", "never"],
+      "max-len": ["error", { "code": 80 }],
+      "import/no-dynamic-require": "off",
+      "global-require": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
