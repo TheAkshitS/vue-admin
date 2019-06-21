@@ -1,4 +1,4 @@
-import { initialResourcesRoutes } from './common.utils'
+import { initialResourcesRoutes } from './common.utils';
 
 /**
  * Annonymous Function - Creates a simualtion of initial vuex crud state
@@ -11,13 +11,13 @@ import { initialResourcesRoutes } from './common.utils'
  */
 export default ({
   snapshot = 'default',
-  initialResources
+  initialResources,
 }) => {
   // New custom mutations configurations should be added here
   const snapshots = {
     default: initDefaultState,
-    Resource: initStateForResource
-  }
+    Resource: initStateForResource,
+  };
   // Vuex Crud Initial State for a resource
   const initialResourceState = {
     createError: null,
@@ -33,14 +33,14 @@ export default ({
     isUpdating: false,
     list: [],
     replaceError: null,
-    updateError: null
-  }
+    updateError: null,
+  };
   // Vuex Initial State for entities
-  const initialEntitiesState = {}
+  const initialEntitiesState = {};
   // Vuex Initial State for resource routes
   const initialResourcesState = {
-    routes: initialResourcesRoutes(initialResources)
-  }
+    routes: initialResourcesRoutes(initialResources),
+  };
 
   /**
    * initResourcesCrud - Given a list of resources, creates mocked vuex crud
@@ -51,24 +51,24 @@ export default ({
    * @return {Object} An object with mocked vuex crud state
    */
   function initResourcesState(resources) {
-    const _resources = {}
-    resources.forEach(resource => {
-      _resources[resource] = initialResourceState
-    })
-    return _resources
+    const _resources = {};
+    resources.forEach((resource) => {
+      _resources[resource] = initialResourceState;
+    });
+    return _resources;
   }
   // Initialises default state
   function initDefaultState() {
     return {
       ...initResourcesState(initialResources),
       entities: initialEntitiesState,
-      resources: initialResourcesState
-    }
+      resources: initialResourcesState,
+    };
   }
   // Initialises state for a Resource component
   function initStateForResource() {
-    return {}
+    return {};
   }
 
-  snapshots[snapshot]()
-}
+  snapshots[snapshot]();
+};

@@ -1,1 +1,1 @@
-export default { rowsPerPage: 14 }
+export default { rowsPerPage: 14 };

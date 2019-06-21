@@ -11,5 +11,5 @@ export {
   Edit,
   EditButton,
   List,
-  Show
-}
+  Show,
+};

@@ -9,19 +9,19 @@
 
 <script>
 export default {
-  name: "TextField",
-  props:{
+  name: 'TextField',
+  props: {
     content: {
       type: [String, Number],
-      default: 'This is a default content'
+      default: 'This is a default content',
     },
-      tag: {
-        type: String,
-        default: 'p'
-      }
+    tag: {
+      type: String,
+      default: 'p',
+    },
   },
   data() {
-    return {}
-  }
+    return {};
+  },
 };
 </script>

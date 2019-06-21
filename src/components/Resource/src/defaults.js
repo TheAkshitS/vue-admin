@@ -1,7 +1,7 @@
 import {
   handleEmptyProp,
-  handleSchemaValidation
-} from '@handlers/error/src'
+  handleSchemaValidation,
+} from '@handlers/error/src';
 
 /**
  * Defaults - Default attributes for the Resource component
@@ -9,7 +9,7 @@ import {
  * @return {Object} An object containing props and methods
  */
 export default () => {
-  const component = 'Resource'
+  const component = 'Resource';
 
   function _parseResponse(response) {
     const { data } = response;
@@ -18,18 +18,18 @@ export default () => {
 
   function _parseResponses() {
     return {
-      set parseList(response) { return _parseResponse(response) },
-      set parseSingle(response) { return _parseResponse(response) }
-    }
+      set parseList(response) { return _parseResponse(response); },
+      set parseSingle(response) { return _parseResponse(response); },
+    };
   }
 
   function _redirect() {
     return {
       views: {
         create: 'list',
-        edit: 'show'
-      }
-    }
+        edit: 'show',
+      },
+    };
   }
 
   /**
@@ -50,8 +50,8 @@ export default () => {
     return handleSchemaValidation({
       schema: redirect,
       prop: 'redirect',
-      at: component
-    })
+      at: component,
+    });
   }
 
   return {
@@ -62,10 +62,10 @@ export default () => {
       userPermissionsField,
       apiUrl,
       redirect,
-      parseResponses
+      parseResponses,
     },
     validate: {
-      redirect: validateRedirect
-    }
-  }
-}
+      redirect: validateRedirect,
+    },
+  };
+};

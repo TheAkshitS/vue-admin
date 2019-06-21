@@ -28,10 +28,10 @@ import Auth from '@components/Auth'
 import AuthActionTypes from '@va-auth/types'
 
 export default {
-  name: "Admin",
+  name: 'Admin',
   props: {
     appLayout: {
-      default: () => Ui
+      default: () => Ui,
     },
     authLayout: {
       default: () => Auth
@@ -51,7 +51,7 @@ export default {
   components: {
     Auth,
     Core,
-    Ui
+    Ui,
   },
   created() {
     this.$store.registerModule('resources', resourceModule)

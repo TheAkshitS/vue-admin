@@ -16,49 +16,49 @@ describe('UI Test', () => {
   })
 
   it('Title should be vue-admin', () => {
-    cy.title().should('eq', UI_CONTENT.MAIN_TITLE)
-  })
+    cy.title().should('eq', UI_CONTENT.MAIN_TITLE);
+  });
 
   it('Toolbar title should be Vue Admin', () => {
-    const mainToolbarTitleName = UI_NAMES.MAIN_TOOLBAR_TITLE
+    const mainToolbarTitleName = UI_NAMES.MAIN_TOOLBAR_TITLE;
     const mainToolbarTitleElement = queryElementByProp({
       type: 'div',
       prop: 'name',
-      value: mainToolbarTitleName
-    })
+      value: mainToolbarTitleName,
+    });
 
-    const expectedMainToolbarTitleText = UI_CONTENT.MAIN_TOOLBAR_TITLE
+    const expectedMainToolbarTitleText = UI_CONTENT.MAIN_TOOLBAR_TITLE;
 
     cy.get(mainToolbarTitleElement).should((mainToolbarTitle) => {
-      expect(mainToolbarTitle).to.contain(expectedMainToolbarTitleText)
-    })
-  })
+      expect(mainToolbarTitle).to.contain(expectedMainToolbarTitleText);
+    });
+  });
 
   it('Toolbar hamburger button should open drawer on click', () => {
-    const mainToolbarTitleName = UI_NAMES.MAIN_TOOLBAR_TITLE
+    const mainToolbarTitleName = UI_NAMES.MAIN_TOOLBAR_TITLE;
 
     const mainToolbarTitleElement = queryElementByProp({
       type: 'div',
       prop: 'name',
-      value: mainToolbarTitleName
-    })
-    cy.get(`${mainToolbarTitleElement} button`).click()
-  })
+      value: mainToolbarTitleName,
+    });
+    cy.get(`${mainToolbarTitleElement} button`).click();
+  });
 
   it('Drawer should redirect to Articles list view on article tile click', () => {
-    const routes = [{ name: 'list' }]
-    cy.InitServer({ resourceName: 'articles', routes })
+    const routes = [{ name: 'list' }];
+    cy.InitServer({ resourceName: 'articles', routes });
     const drawerArticlesTileName = UI_NAMES.DRAWER_RESOURCE_TILE.with({
-      resourceName: 'articles'
-    })
+      resourceName: 'articles',
+    });
 
     const drawerArticlesTileElement = queryElementByProp({
       type: 'a',
       prop: 'name',
-      value: drawerArticlesTileName
-    })
-    cy.get(drawerArticlesTileElement).click()
+      value: drawerArticlesTileName,
+    });
+    cy.get(drawerArticlesTileElement).click();
 
-    cy.url().should('include', '/articles')
-  })
-})
+    cy.url().should('include', '/articles');
+  });
+});

@@ -1,6 +1,6 @@
 import Core from './src/core';
 
-Core.install = function(Vue) {
+Core.install = function (Vue) {
   Vue.component(Core.name, Core);
 };
 

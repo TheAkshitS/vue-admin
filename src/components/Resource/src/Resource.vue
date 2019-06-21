@@ -5,24 +5,24 @@ import createRouteBindings from '@router/route.bindings'
 import defaults from './defaults'
 
 export default {
-  name: "Resource",
+  name: 'Resource',
   props: {
     name: {
       type: String,
       required: true,
-      default: defaults().props.name
+      default: defaults().props.name,
     },
     list: {
       type: [Array, Object],
       required: true,
-      default: defaults().props.list
+      default: defaults().props.list,
     },
     show: [Array, Object],
     create: [Array, Object],
     edit: [Array, Object],
     resourceIdName: {
       type: String,
-      default: defaults().props.resourceIdName
+      default: defaults().props.resourceIdName,
     },
     userPermissionsField: {
       type: String,
@@ -31,17 +31,17 @@ export default {
     apiUrl: {
       type: String,
       required: true,
-      default: defaults().props.apiUrl
+      default: defaults().props.apiUrl,
     },
     redirect: {
       type: Object,
       default: defaults().props.redirect,
-      validator: defaults().validate.redirect
+      validator: defaults().validate.redirect,
     },
     parseResponses: {
       type: Object,
-      default: defaults().props.parseResponses
-    }
+      default: defaults().props.parseResponses,
+    },
   },
   created: function() {
     if (!this.storeHasModule(this.name)) {
@@ -75,10 +75,10 @@ export default {
         parseResponses: this.parseResponses
       })
       // Adds binded components to routes
-      routes.push(bind.list({ wrapper: List }))
-      routes.push(bind.show({ wrapper: Show }))
-      routes.push(bind.create({ wrapper: Create }))
-      routes.push(bind.edit({ wrapper: Edit }))
+      routes.push(bind.list({ wrapper: List }));
+      routes.push(bind.show({ wrapper: Show }));
+      routes.push(bind.create({ wrapper: Create }));
+      routes.push(bind.edit({ wrapper: Edit }));
       // Adds the routes to the global router
       this.$router.addRoutes(routes)
     },
@@ -92,11 +92,11 @@ export default {
       return !!this.$store.state[moduleName]
     }
   },
-  mounted: function() {
-    this.loadRoutes()
+  mounted() {
+    this.loadRoutes();
   },
   render() {
-    return null
-  }
-}
+    return null;
+  },
+};
 </script>

@@ -35,7 +35,7 @@ import { mapState } from "vuex";
 import { Input, TextField, Spinner } from "../../UiComponents"
 
 export default {
-  name: "Edit",
+  name: 'Edit',
   components: {
     Input: Input,
     TextField: TextField,
@@ -44,27 +44,27 @@ export default {
   props: {
     resourceName: {
       type: String,
-      default: null
+      default: null,
     },
     fields: {
       type: Array,
-      required: true
+      required: true,
     },
     va: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       view: 'edit',
       UI_CONTENT,
-      UI_NAMES
-    }
+      UI_NAMES,
+    };
   },
   computed: {
     ...mapState([
-      "route" // vuex-router-sync
+      'route', // vuex-router-sync
     ]),
     entity() {
       return this.va.getEntity()
@@ -76,7 +76,7 @@ export default {
 
   methods: {
     storeValue(value, resourceKey) {
-      this.va.updateEntity({ resourceKey, value })
+      this.va.updateEntity({ resourceKey, value });
     },
 
     storeValues() {
@@ -87,25 +87,25 @@ export default {
     },
 
     submit() {
-      this.va.submitEntity()
+      this.va.submitEntity();
     },
 
     type(type) {
-      return type || 'Input'
+      return type || 'Input';
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`
+      return `${this.resourceName}_${label}`;
     },
 
     label(field) {
-      return field.label || field
+      return field.label || field;
     },
 
     args(field) {
-      const args = typeof(field) === 'string' ? { 'label': field, 'placeHolder': field } : field
-      return args
-    }
+      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field;
+      return args;
+    },
   },
 
   created() {

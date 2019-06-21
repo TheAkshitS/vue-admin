@@ -19,37 +19,36 @@ export default ({
   resourceName,
   store,
   router,
-  parseResponses
-}) => {
-  return {
-    /**
+  parseResponses,
+}) => ({
+  /**
      * getEntityForm - Gets the current 'resourceName' entity. The value does not
      * exist until a user inputs data using 'updateEntity'.
      *
      * @return {Object} a 'resourceName' object with updated data from the form.
      */
-    getEntityForm() {
-      const formType = 'createForm'
-      return getEntityForm({ store, resourceName, formType })
-    },
+  getEntityForm() {
+    const formType = 'createForm';
+    return getEntityForm({ store, resourceName, formType });
+  },
 
-    /**
+  /**
      * updateEntity - Given a key and a value, updates the 'resourceName' entity
      * in the store.
      *
      * @param {String} resourceKey A 'resourceName' attribute key
      * @param {String} value       A given value to be stored
      */
-    updateEntity({ resourceKey, value }) {
-      const formType = 'createForm'
-      updateEntity({
-        resourceKey,
-        value,
-        store,
-        resourceName,
-        formType
-      })
-    },
+  updateEntity({ resourceKey, value }) {
+    const formType = 'createForm';
+    updateEntity({
+      resourceKey,
+      value,
+      store,
+      resourceName,
+      formType,
+    });
+  },
 
     /**
      * initEntity - Init the 'resourceName' entity in the store.
@@ -68,19 +67,18 @@ export default ({
      *
      * @return {Promise} A pending promise.
      */
-    submitEntity() {
-      const actionType = 'create'
-      const actionTypeParams = { data : this.getEntityForm() }
-      submitEntity({
-        resourceName,
-        actionType,
-        actionTypeParams,
-        store,
-        router,
-        redirectView,
-        resourceIdName,
-        parseResponses
-      })
-    }
-  }
-}
+  submitEntity() {
+    const actionType = 'create';
+    const actionTypeParams = { data: this.getEntityForm() };
+    submitEntity({
+      resourceName,
+      actionType,
+      actionTypeParams,
+      store,
+      router,
+      redirectView,
+      resourceIdName,
+      parseResponses,
+    });
+  },
+});

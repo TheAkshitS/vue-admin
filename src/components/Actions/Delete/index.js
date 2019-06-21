@@ -1,6 +1,6 @@
-import Delete from "./Delete";
+import Delete from './Delete';
 
-Delete.install = function(Vue) {
+Delete.install = function (Vue) {
   Vue.component(Delete.name, Delete);
 };
 

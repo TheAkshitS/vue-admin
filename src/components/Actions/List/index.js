@@ -1,6 +1,6 @@
-import List from "./Composer";
+import List from './Composer';
 
-List.install = function(Vue) {
+List.install = function (Vue) {
   Vue.component(List.name, List);
 };
 

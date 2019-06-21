@@ -11,15 +11,15 @@
  * @return {VNode} A Vue component
  */
 export default (createElement, context, { component }) => {
-  const { composer } = require(`./${component.name}/defaults.js`).default()
-  const { parentPropKeys, childrenAdapter } = composer
+  const { composer } = require(`./${component.name}/defaults.js`).default();
+  const { parentPropKeys, childrenAdapter } = composer;
 
   return compose(createElement, context, {
     component,
     parentPropKeys,
-    childrenAdapter
-  })
-}
+    childrenAdapter,
+  });
+};
 
 /**
  * compose - Given a createElement function, a context and a set of options,
@@ -36,7 +36,7 @@ export default (createElement, context, { component }) => {
 function compose(createElement, context, {
   component,
   parentPropKeys,
-  childrenAdapter
+  childrenAdapter,
 }) {
   // TODO: this should be the right place to handle View component misusing.
   // Use case: a user instance it as a component in a template without passing
@@ -48,30 +48,29 @@ function compose(createElement, context, {
   if (context.children) {
     // Gets the context children and the parent component associated by Resource
     // during the binding.
-    const { children, parent: { $attrs } } = context
+    const { children, parent: { $attrs } } = context;
     // Extracts the props that should be passed to the View
     const parentProps = parentPropKeys.reduce((props, key) => {
-      props[key] = $attrs[key]
-      return props
-    }, {})
+      props[key] = $attrs[key];
+      return props;
+    }, {});
     // Composes the View children into an array of elements
     // TODO: this could probably be done in the future by passing components
     // instead of building an array for Show
-    const fields = children.map(child => {
-      const { data: { attrs }, tag } = child
+    const fields = children.map((child) => {
+      const { data: { attrs }, tag } = child;
 
       const childrenProps = Object.keys(childrenAdapter).reduce((props, key) => {
-        props[childrenAdapter[key]] = attrs[key]
-        return props
-      }, {})
+        props[childrenAdapter[key]] = attrs[key];
+        return props;
+      }, {});
 
-      return { ...childrenProps, tag }
-    })
+      return { ...childrenProps, tag };
+    });
 
-    const props = { ...parentProps, fields }
-    return createElement(component, { props })
+    const props = { ...parentProps, fields };
+    return createElement(component, { props });
   }
   // The View is already being instanced by Resource as an Array
-  return createElement(component, context)
-
+  return createElement(component, context);
 }

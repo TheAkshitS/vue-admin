@@ -96,14 +96,14 @@ import UI_NAMES from '../../../constants/ui.element.names'
 import AuthActionTypes from '@va-auth/types'
 
 export default {
-  name: "Ui",
+  name: 'Ui',
   props: {
-    title: String
+    title: String,
   },
   data() {
     return {
-      selectedLocale: "EN",
-      locales: ["EN", "ID"],
+      selectedLocale: 'EN',
+      locales: ['EN', 'ID'],
       drawer: false,
       menuItems: [
         {
@@ -122,7 +122,7 @@ export default {
         }
       ],
       UI_CONTENT,
-      UI_NAMES
+      UI_NAMES,
     };
   },
   mounted() {

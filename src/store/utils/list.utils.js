@@ -1,4 +1,4 @@
-import { fetchList, getList } from './common.utils'
+import { fetchList, getList } from './common.utils';
 
 /**
  * List View Utils - A function used to create utilities
@@ -10,25 +10,23 @@ import { fetchList, getList } from './common.utils'
  */
 export default ({
   resourceName,
-  store
-}) => {
-  return {
-    /**
+  store,
+}) => ({
+  /**
      * fetchList - Fetchs a set of 'resourceName' using the Vuex Crud getters
      *
      * @return {Array} An array of 'resourceName' elements
      */
-    fetchList() {
-      return fetchList({ resourceName, store })
-    },
+  fetchList() {
+    return fetchList({ resourceName, store });
+  },
 
-    /**
+  /**
      * getList - Gets a set of 'resourceName' elements from the store
      *
      * @return {Array} An array of 'resourceName' elements
      */
-    getList() {
-      return getList({ resourceName, store })
-    }
-  }
-}
+  getList() {
+    return getList({ resourceName, store });
+  },
+});

@@ -4,7 +4,7 @@ import UI_NAMES from '../../../src/constants/ui.element.names'
 import { createUrlWithResource, createElementQueryWith } from './helpers'
 const { AUTH_LOGIN_REQUEST } = require('../../../src/va-auth/src/types')
 
-const storePath = 'app.$store'
+const storePath = 'app.$store';
 
 /**
  * InitEntityUtils - Initialises a set of functions to be used by a specific
@@ -18,11 +18,10 @@ const storePath = 'app.$store'
  */
 export const InitEntityUtils = ({
   resourceName,
-  view
-}) => {
-  return {
+  view,
+}) => ({
 
-    /**
+  /**
      * getUrlByResource - Given an object with parameters, returns the url
      * for a given resource
      *
@@ -31,10 +30,8 @@ export const InitEntityUtils = ({
      *
      * @return {String} An url
      */
-    getUrlByResource: (args = {}) => {
-      return createUrlWithResource(args)
-    },
-    /**
+  getUrlByResource: (args = {}) => createUrlWithResource(args),
+  /**
      * getInputBy - Calls cypress to find an input element that matches the
      * given parameters
      *
@@ -43,21 +40,21 @@ export const InitEntityUtils = ({
      *
      * @return {Object} An input element.
      */
-    getInputBy: (args = {}) => {
-      const _args = {
-        constant: UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD,
-        constantParams: {
-          resourceName,
-          view,
-          field: args.field
-        },
-        elementProp: 'name',
-        elementType: 'input'
-      }
-      return cy.getElement(Object.assign({}, _args, args))
-    },
+  getInputBy: (args = {}) => {
+    const _args = {
+      constant: UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD,
+      constantParams: {
+        resourceName,
+        view,
+        field: args.field,
+      },
+      elementProp: 'name',
+      elementType: 'input',
+    };
+    return cy.getElement(Object.assign({}, _args, args));
+  },
 
-    /**
+  /**
      * getSubmitButton - Calls cypress to find and return a button element that
      * matches the given parameters
      *
@@ -66,20 +63,20 @@ export const InitEntityUtils = ({
      *
      * @return {Object} A button element.
      */
-    getSubmitButton: (args = {}) => {
-      const _args = {
-        constant: UI_NAMES.RESOURCE_VIEW_SUBMIT_BUTTON,
-        constantParams: {
-          resourceName,
-          view
-        },
-        elementProp: 'name',
-        elementType: 'button'
-      }
-      return cy.getElement(Object.assign({}, _args, args))
-    },
+  getSubmitButton: (args = {}) => {
+    const _args = {
+      constant: UI_NAMES.RESOURCE_VIEW_SUBMIT_BUTTON,
+      constantParams: {
+        resourceName,
+        view,
+      },
+      elementProp: 'name',
+      elementType: 'button',
+    };
+    return cy.getElement(Object.assign({}, _args, args));
+  },
 
-    /**
+  /**
      * getTableRowBy - Calls cypress to find and return a row element that
      * matches the given parameters
      *
@@ -88,22 +85,21 @@ export const InitEntityUtils = ({
      *
      * @return {Object} A td element
      */
-    getTableRowBy: (args = {}) => {
-      const _args = {
-        constant: UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD,
-        constantParams: {
-          resourceName,
-          view,
-          field: args.field,
-          index: args.index
-        },
-        elementProp: 'name',
-        elementType: 'td'
-      }
-      return cy.getElement(Object.assign({}, _args, args))
-    }
-  }
-}
+  getTableRowBy: (args = {}) => {
+    const _args = {
+      constant: UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD,
+      constantParams: {
+        resourceName,
+        view,
+        field: args.field,
+        index: args.index,
+      },
+      elementProp: 'name',
+      elementType: 'td',
+    };
+    return cy.getElement(Object.assign({}, _args, args));
+  },
+});
 
 /**
  * getElement - Given a set of data, builds a query to search for a DOM element
@@ -128,16 +124,16 @@ export const getElement = ({
   // Builds the name of the element using predefined constants
   const elementFieldName = (constant instanceof Object) || constantParams
     ? constant.with(constantParams)
-    : constant
+    : constant;
   // Creates the Cypress query
   const element = createElementQueryWith({
     type: elementType,
     prop: elementProp,
-    value: elementFieldName
-  })
+    value: elementFieldName,
+  });
   // Gets the 'elementType' element
-  return cy.get(element)
-}
+  return cy.get(element);
+};
 
 export const getStore = () => cy.window().its(storePath)
 

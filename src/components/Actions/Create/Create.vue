@@ -40,7 +40,7 @@ import { mapState } from "vuex";
 import { Input, TextField, Spinner } from "../../UiComponents"
 
 export default {
-  name: "Create",
+  name: 'Create',
   components: {
     Input: Input,
     TextField: TextField,
@@ -49,23 +49,23 @@ export default {
   props: {
     resourceName: {
       type: String,
-      require: true
+      require: true,
     },
     fields: {
       type: Array,
-      required: true
+      required: true,
     },
     va: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       view: 'create',
       UI_CONTENT,
-      UI_NAMES
-    }
+      UI_NAMES,
+    };
   },
 
   computed: {
@@ -83,29 +83,29 @@ export default {
 
   methods: {
     storeValue(value, resourceKey) {
-      this.va.updateEntity({ resourceKey, value })
+      this.va.updateEntity({ resourceKey, value });
     },
 
     submit() {
-      this.va.submitEntity()
+      this.va.submitEntity();
     },
 
     type(type) {
-      return type || 'Input'
+      return type || 'Input';
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`
+      return `${this.resourceName}_${label}`;
     },
 
     label(field) {
-      return field.label || field
+      return field.label || field;
     },
 
     args(field) {
-      const args = typeof(field) === 'string' ? { label: field, placeHolder: field } : field
-      return args
-    }
-  }
+      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field;
+      return args;
+    },
+  },
 };
 </script>

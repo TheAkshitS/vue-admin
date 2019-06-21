@@ -1,7 +1,7 @@
 
-import Resource from "./src/Composer";
+import Resource from './src/Composer';
 
-Resource.install = function(Vue) {
+Resource.install = function (Vue) {
   Vue.component(Resource.name, Resource);
 };
 

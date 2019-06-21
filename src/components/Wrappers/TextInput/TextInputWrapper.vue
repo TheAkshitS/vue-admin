@@ -1,16 +1,16 @@
 
 <script>
 export default {
-  name: "TextInputWrapper",
+  name: 'TextInputWrapper',
   functional: true,
   props: {
 
   },
   data() {
-    return {}
+    return {};
   },
   render(createElement, context) {
-    return createElement('div', context.children)
-  }
+    return createElement('div', context.children);
+  },
 };
 </script>

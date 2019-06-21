@@ -1,5 +1,5 @@
-import createStoreWith from './store'
+import createStoreWith from './store';
 
 export default {
-  createStoreWith
-}
+  createStoreWith,
+};

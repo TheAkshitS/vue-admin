@@ -1,8 +1,8 @@
-import CreateMagazines from '../../../../demo/components/magazines/CreateMagazines'
-import EditMagazines from '../../../../demo/components/magazines/EditMagazines'
-import ListMagazines from '../../../../demo/components/magazines/ListMagazines'
-import ShowMagazines from '../../../../demo/components/magazines/ShowMagazines'
-import defaults from '../../../../src/components/Resource/src/defaults'
+import CreateMagazines from '../../../../demo/components/magazines/CreateMagazines';
+import EditMagazines from '../../../../demo/components/magazines/EditMagazines';
+import ListMagazines from '../../../../demo/components/magazines/ListMagazines';
+import ShowMagazines from '../../../../demo/components/magazines/ShowMagazines';
+import defaults from '../../../../src/components/Resource/src/defaults';
 
 export default {
   props: {
@@ -15,16 +15,16 @@ export default {
     list: ListMagazines,
     show: ShowMagazines,
     redirect: defaults().props.redirect(),
-    parseResponses: defaults().props.parseResponses()
+    parseResponses: defaults().props.parseResponses(),
   },
   methods: {
     storeMethods: {
       'resources/addRoute': {
         params: {
           path: '/magazines',
-          name: 'magazines'
-        }
-      }
-    }
-  }
-}
+          name: 'magazines',
+        },
+      },
+    },
+  },
+};

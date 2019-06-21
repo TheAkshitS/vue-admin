@@ -1,6 +1,6 @@
 import Input from './src/input';
 
-Input.install = function(Vue) {
+Input.install = function (Vue) {
   Vue.component(Input.name, Input);
 };
 

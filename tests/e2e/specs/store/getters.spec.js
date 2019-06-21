@@ -1,4 +1,4 @@
-import Factory from '../../factory'
+import Factory from '../../factory';
 
 describe('Vuex Store Getters', () => {
   const getStore = () => cy.getStore()
@@ -21,8 +21,8 @@ describe('Vuex Store Getters', () => {
   })
 
   it('Should have attributes on initialisation', () => {
-    getStore().its('getters').should('have.keys', Object.keys(initialGetters))
-  })
+    getStore().its('getters').should('have.keys', Object.keys(initialGetters));
+  });
 
   it('Attribute {resources/all} should have been initialised', () => {
     const attribute = 'resources/all'
@@ -47,9 +47,9 @@ describe('Vuex Store Getters', () => {
 
   it('{Entities} getters should have been initialised', () => {
     getStore().its('getters').should((getters) => {
-      expect(getters['entities/getEntity']).to.be.empty
-    })
-  })
+      expect(getters['entities/getEntity']).to.be.empty;
+    });
+  });
 
   /**
    * authGettersShouldHaveBeenInitialised - Given a resource, asserts the
@@ -86,4 +86,4 @@ describe('Vuex Store Getters', () => {
       expect(getters[list]).to.be.empty
     })
   }
-})
+});

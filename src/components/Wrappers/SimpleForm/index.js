@@ -1,6 +1,6 @@
 import SimpleFormWrapper from './SimpleFormWrapper';
 
-SimpleFormWrapper.install = function(Vue) {
+SimpleFormWrapper.install = function (Vue) {
   Vue.component(SimpleFormWrapper.name, SimpleFormWrapper);
 };
 

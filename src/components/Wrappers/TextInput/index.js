@@ -1,6 +1,6 @@
 import TextInputWrapper from './TextInputWrapper';
 
-TextInputWrapper.install = function(Vue) {
+TextInputWrapper.install = function (Vue) {
   Vue.component(TextInputWrapper.name, TextInputWrapper);
 };
 

@@ -1,5 +1,5 @@
 <script>
-import Resource from './Resource'
+import Resource from './Resource';
 
 export default {
   functional: true,
@@ -25,7 +25,7 @@ export default {
       Object.assign(props, slots)
     }
     // Resource is rendered with props, either having slots or not.
-    return createElement(Resource, { props })
-  }
-}
+    return createElement(Resource, { props });
+  },
+};
 </script>

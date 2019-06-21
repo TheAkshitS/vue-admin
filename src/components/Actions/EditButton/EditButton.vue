@@ -17,37 +17,37 @@
 </template>
 
 <script>
-import UI_CONTENT from '@constants/ui.content.default'
-import UI_NAMES from '@constants/ui.element.names'
+import UI_CONTENT from '@constants/ui.content.default';
+import UI_NAMES from '@constants/ui.element.names';
 
 export default {
-  name: "EditButton",
+  name: 'EditButton',
 
   props: {
     name: {
       type: String,
-      default: null
+      default: null,
     },
     resourceId: {
-      type: [Number, String]
+      type: [Number, String],
     },
     resourceName: {
-      type: String
+      type: String,
     },
     index: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   data() {
     return {
       UI_CONTENT,
-      UI_NAMES
-    }
+      UI_NAMES,
+    };
   },
   methods: {
     onEdit() {
       this.$router.push({ name: `${this.resourceName}/edit`, params: { id: this.resourceId } });
-    }
+    },
   },
 };
 </script>

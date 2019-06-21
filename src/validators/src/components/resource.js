@@ -1,12 +1,12 @@
-import Joi from 'joi'
+import Joi from 'joi';
 
 function formatResult(result) {
   if (result.error) {
-    const { name, details } = result.error
-    const error = { name, details }
-    return { error }
+    const { name, details } = result.error;
+    const error = { name, details };
+    return { error };
   }
-  return result.value
+  return result.value;
 }
 
 /**
@@ -20,8 +20,8 @@ export const validateRedirect = (redirect) => {
   const joiResult = Joi.object().keys({
     views: Joi.object().keys({
       create: Joi.string().valid(['edit', 'list', 'show']),
-      edit: Joi.string().valid(['create', 'list', 'show'])
-    })
-  }).validate(redirect)
-  return formatResult(joiResult)
-}
+      edit: Joi.string().valid(['create', 'list', 'show']),
+    }),
+  }).validate(redirect);
+  return formatResult(joiResult);
+};

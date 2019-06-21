@@ -1,6 +1,6 @@
-import Edit from "./Composer";
+import Edit from './Composer';
 
-Edit.install = function(Vue) {
+Edit.install = function (Vue) {
   Vue.component(Edit.name, Edit);
 };
 

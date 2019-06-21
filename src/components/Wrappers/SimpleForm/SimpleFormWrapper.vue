@@ -2,11 +2,11 @@
 <script>
 export default {
   functional: true,
-  name: "SimpleFormWrapper",
-  props:{
+  name: 'SimpleFormWrapper',
+  props: {
     source: {
-      type: String
-    }
+      type: String,
+    },
   },
   render(createElement, context) {
     return createElement('div', context.children)

@@ -3,9 +3,9 @@ import {
   InitAuthenticatedUser,
   InitEntityUtils,
   getElement,
-  getStore
-} from '../lib/commands'
-import InitServer from '../lib/server'
+  getStore,
+} from '../lib/commands';
+import InitServer from '../lib/server';
 
 Cypress.Commands.add('authenticate', (args) => authenticate(args))
 Cypress.Commands.add('getStore', () => getStore())

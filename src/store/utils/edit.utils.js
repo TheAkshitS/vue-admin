@@ -3,8 +3,8 @@ import {
   getEntity,
   getEntityForm,
   submitEntity,
-  updateEntity
-} from './common.utils'
+  updateEntity,
+} from './common.utils';
 
 /**
  * Edit View Utils - A function used to create utilities
@@ -25,75 +25,73 @@ export default ({
   resourceName,
   store,
   router,
-  parseResponses
-}) => {
-  return {
-    /**
+  parseResponses,
+}) => ({
+  /**
      * getEntityForm - Gets the current 'resourceName' entity. The value does
      * not exist until a user inputs data using 'updateEntity'.
      *
      * @return {Object} a 'resourceName' object with updated data from the form.
      */
-    getEntityForm() {
-      const formType = 'editForm'
-      return getEntityForm({ store, resourceName, formType })
-    },
+  getEntityForm() {
+    const formType = 'editForm';
+    return getEntityForm({ store, resourceName, formType });
+  },
 
-    /**
+  /**
      * getEntity - Gets a 'resourceName' entity from the store
      *
      * @return {Object} A 'resourceName' entity.
      */
-    getEntity() {
-      return getEntity({ router, resourceName, store })
-    },
+  getEntity() {
+    return getEntity({ router, resourceName, store });
+  },
 
-    /**
+  /**
      * fetchEntity - Fetchs a single 'resourceName' element from the store.
      *
      * @return {Object} A fetched 'resourceName' entity.
      */
-    fetchEntity() {
-      return fetchEntity({ resourceName, router, store })
-    },
+  fetchEntity() {
+    return fetchEntity({ resourceName, router, store });
+  },
 
-    /**
+  /**
      * updateEntity - Given a key and a value, updates the 'resourceName' entity
      * in the store.
      *
      * @param {String} resourceKey A 'resourceName' attribute key
      * @param {String} value       A given value to be stored
      */
-    updateEntity({ resourceKey, value }) {
-      const formType = 'editForm'
-      updateEntity({
-        resourceKey,
-        value,
-        store,
-        resourceName,
-        formType
-      })
-    },
+  updateEntity({ resourceKey, value }) {
+    const formType = 'editForm';
+    updateEntity({
+      resourceKey,
+      value,
+      store,
+      resourceName,
+      formType,
+    });
+  },
 
-    /**
+  /**
      * submitEntity - Dispatchs an update request
      *
      * @return {Promise} A pending promise.
      */
-    submitEntity() {
-      const { id } = router.history.current.params
-      const actionType = 'update'
-      const actionTypeParams = { data: this.getEntityForm(), id }
-      submitEntity({
-        resourceName,
-        actionType,
-        actionTypeParams,
-        store,
-        router,
-        redirectView,
-        resourceIdName,
-        parseResponses
-      })
-    }
-  }
-}
+  submitEntity() {
+    const { id } = router.history.current.params;
+    const actionType = 'update';
+    const actionTypeParams = { data: this.getEntityForm(), id };
+    submitEntity({
+      resourceName,
+      actionType,
+      actionTypeParams,
+      store,
+      router,
+      redirectView,
+      resourceIdName,
+      parseResponses,
+    });
+  },
+});

@@ -16,7 +16,7 @@ export default ({
   resourceName,
   resourceIdName,
   parseResponses,
-  store
+  store,
 }) => {
   const customUrlFn = (id) => {
     const rootUrl =`${apiUrl}${resourceName}/`
@@ -41,7 +41,7 @@ export default ({
     resource: resourceName,
     customUrlFn,
     idAttribute: resourceIdName,
-    ...parseResponses
+    ...parseResponses,
   });
   store.registerModule(resourceName, module);
-}
+};

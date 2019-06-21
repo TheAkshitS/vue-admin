@@ -11,12 +11,12 @@
 
 <script>
 export default {
-  name: "Core",
+  name: 'Core',
   props: {
     appLayout: {},
     title: String,
   },
-  components: {}
+  components: {},
 };
 </script>
 

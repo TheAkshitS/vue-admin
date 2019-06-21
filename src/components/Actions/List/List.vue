@@ -90,68 +90,68 @@ import { Input, TextField, Spinner } from "../../UiComponents";
 import { EditButton, Delete } from "../../Actions";
 
 export default {
-  name: "List",
+  name: 'List',
   props: {
     resourceName: {
       type: String,
       required: true,
     },
     hasShow: {
-      type: Boolean
+      type: Boolean,
     },
     hasCreate: {
-      type: Boolean
+      type: Boolean,
     },
     hasEdit: {
-      type: Boolean
+      type: Boolean,
     },
     fields: {
       type: Array,
-      required: true
+      required: true,
     },
     resourceIdName: {
       type: String,
-      required: true
+      required: true,
     },
     va: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
-    const { rowsPerPage } = UI_ELEMENTS
+    const { rowsPerPage } = UI_ELEMENTS;
     return {
       view: 'list',
       UI_CONTENT,
       UI_NAMES,
       pagination: {
         page: 1,
-        rowsPerPage
-      }
-    }
+        rowsPerPage,
+      },
+    };
   },
   computed: {
-    headers: function () {
-      const newHeaders = []
+    headers() {
+      const newHeaders = [];
       this.fields.forEach((field) => {
         newHeaders.push({
           text: field.headerText || this.label(field),
           align: field.alignHeader || 'left',
           sortable: field.sortable || false,
-          value: this.label(field)
-        })
-      })
+          value: this.label(field),
+        });
+      });
       this.hasEdit && newHeaders.push({
-        text: "Edit",
+        text: 'Edit',
         align: 'center',
         sortable: false,
-        width: 10
+        width: 10,
       });
       newHeaders.push({
-        text: "Delete",
+        text: 'Delete',
         align: 'center',
         sortable: false,
-        width: 10
+        width: 10,
       });
       return newHeaders;
     },
@@ -173,25 +173,25 @@ export default {
 
   methods: {
     type(type) {
-      return type || 'TextField'
+      return type || 'TextField';
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`
+      return `${this.resourceName}_${label}`;
     },
 
     label(field) {
-      return field.label || field
+      return field.label || field;
     },
 
     args(field) {
-      const args = typeof(field) === 'string' ? { 'label': field } : field
-      return args
-    }
+      const args = typeof (field) === 'string' ? { label: field } : field;
+      return args;
+    },
   },
 
   created() {
-    this.va.fetchList()
-  }
+    this.va.fetchList();
+  },
 };
 </script>

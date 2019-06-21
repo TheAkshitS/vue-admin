@@ -1,9 +1,5 @@
 
-export const initialResourcesRoutes = (resources) => {
-  return resources.map(resource => {
-    return {
-      path: `/${resource}`,
-      name: resource
-    }
-  })
-}
+export const initialResourcesRoutes = resources => resources.map(resource => ({
+  path: `/${resource}`,
+  name: resource,
+}));

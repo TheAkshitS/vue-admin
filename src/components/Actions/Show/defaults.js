@@ -8,19 +8,19 @@ export default () => {
   /**
    * Show View default composer options
    */
-   const composer = {
-     parentPropKeys: [
-       'resourceName',
-       'redirect',
-       'va'
-     ],
-     childrenAdapter: {
-       placeHolder: 'placeHolder',
-       source: 'label'
-     }
-   }
+  const composer = {
+    parentPropKeys: [
+      'resourceName',
+      'redirect',
+      'va',
+    ],
+    childrenAdapter: {
+      placeHolder: 'placeHolder',
+      source: 'label',
+    },
+  };
 
   return {
-    composer
-  }
-}
+    composer,
+  };
+};

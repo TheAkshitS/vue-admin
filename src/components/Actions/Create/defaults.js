@@ -12,15 +12,15 @@ export default () => {
     parentPropKeys: [
       'resourceName',
       'redirect',
-      'va'
+      'va',
     ],
     childrenAdapter: {
       placeHolder: 'placeHolder',
-      source: 'label'
-    }
-  }
+      source: 'label',
+    },
+  };
 
   return {
-    composer
-  }
-}
+    composer,
+  };
+};

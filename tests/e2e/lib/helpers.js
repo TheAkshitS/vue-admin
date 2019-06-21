@@ -6,11 +6,11 @@ export default {
   createElementQueryWith: ({
     type = '',
     prop,
-    value
+    value,
   }) => `${type}[${prop}=${value}]`,
 
   createUrlWithResource: ({
     resourceName,
-    path = ''
-  }) => `${Cypress.config().baseUrl}/#/${resourceName}/${path}`
-}
+    path = '',
+  }) => `${Cypress.config().baseUrl}/#/${resourceName}/${path}`,
+};

@@ -1,18 +1,18 @@
-const docsUrl = require('@/../package.json').directories.doc
+const docsUrl = require('@/../package.json').directories.doc;
 
-const errorTitle  = '\n\nVueAdmin/{at}:\n\n'
-const errorFooter = '{errorMessage}\tTake a look at our documentation at {url}\n'
+const errorTitle = '\n\nVueAdmin/{at}:\n\n';
+const errorFooter = '{errorMessage}\tTake a look at our documentation at {url}\n';
 
 // Component doc paths should be added here
 const componentsDocs = {
-  Resource: '{docsUrl}/Resource.md#resource-props'
-}
+  Resource: '{docsUrl}/Resource.md#resource-props',
+};
 
 /**
  * withParams - Defines the interpolation symbol of a template
  */
 function withParams(key) {
-  return `{${key}}`
+  return `{${key}}`;
 }
 
 /**
@@ -25,10 +25,8 @@ function withParams(key) {
  * @return {String} A message built with args
  */
 function buildMessage(message, args) {
-  const paramKeys = Object.keys(args)
-  return paramKeys.reduce((parsedMessage, paramKey) => {
-    return parsedMessage.replace(withParams(paramKey), args[paramKey])
-  }, message)
+  const paramKeys = Object.keys(args);
+  return paramKeys.reduce((parsedMessage, paramKey) => parsedMessage.replace(withParams(paramKey), args[paramKey]), message);
 }
 
 /**
@@ -41,10 +39,10 @@ function buildMessage(message, args) {
  * @return {Function} A builder function of messageType
  */
 export default (template) => {
-  const params = template.split('.')
-  const language = params[0]
-  const messageType = params[1]
-  const messages = require(`./${language}/${messageType}.json`)
+  const params = template.split('.');
+  const language = params[0];
+  const messageType = params[1];
+  const messages = require(`./${language}/${messageType}.json`);
 
   /**
    * buildErrorMessage - Given a template constant and a set of params, returns
@@ -56,20 +54,20 @@ export default (template) => {
    * @return {String} An error message built with messageParams
    */
   function buildErrorMessage(constant, messageParams) {
-    const { at }        = messageParams
-    const componentDoc  = componentsDocs[at]
-    const prefix        = buildMessage(errorTitle, { at })
-    const url           = buildMessage(componentDoc, { docsUrl })
-    Object.assign(messageParams, { prefix })
-    const errorMessage  = buildMessage(messages[constant], messageParams)
+    const { at } = messageParams;
+    const componentDoc = componentsDocs[at];
+    const prefix = buildMessage(errorTitle, { at });
+    const url = buildMessage(componentDoc, { docsUrl });
+    Object.assign(messageParams, { prefix });
+    const errorMessage = buildMessage(messages[constant], messageParams);
 
-    return buildMessage(errorFooter, { errorMessage, url })
+    return buildMessage(errorFooter, { errorMessage, url });
   }
 
   const messageTypes = {
-    error: buildErrorMessage
+    error: buildErrorMessage,
     // newMessages: buildNewMessage
-  }
+  };
 
-  return messageTypes[messageType]
-}
+  return messageTypes[messageType];
+};

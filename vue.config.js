@@ -18,5 +18,7 @@ module.exports = {
         '@validators': path.resolve(__dirname, 'src/validators/src')
       }
     }
-  }
-}
+  },
+  lintOnSave: false,
+
+};

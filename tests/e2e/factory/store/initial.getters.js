@@ -1,4 +1,4 @@
-import { initialResourcesRoutes } from './common.utils'
+import { initialResourcesRoutes } from './common.utils';
 
 /**
  * Anonymous Function - Creates a simualtion of initial vuex crud getters
@@ -14,12 +14,12 @@ export default () => {
   ]
   // Vuex initial entities getters should be added here
   const entitiesCrud = {
-    'entities/getEntity': {}
-  }
+    'entities/getEntity': {},
+  };
   // Vuex initial resources getters should be added here
   const resourcesGetters = {
-    'resources/all': initialResourcesRoutes(initialResources)
-  }
+    'resources/all': initialResourcesRoutes(initialResources),
+  };
 
   // Vuex auth getters
   const authGetters = {
@@ -41,14 +41,14 @@ export default () => {
    * @return {Object} An object with mocked vuex crud methods
    */
   function initResourcesCrud(resources) {
-    const crud = {}
-    resources.forEach(resource => {
-      crud[`${resource}/byId`] = (id) => id,
+    const crud = {};
+    resources.forEach((resource) => {
+      crud[`${resource}/byId`] = id => id,
       crud[`${resource}/isError`] = false,
       crud[`${resource}/isLoading`] = false,
-      crud[`${resource}/list`] = []
-    })
-    return crud
+      crud[`${resource}/list`] = [];
+    });
+    return crud;
   }
 
   return {
