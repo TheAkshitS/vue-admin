@@ -1,7 +1,9 @@
-import SimpleFormWrapper from './SimpleFormWrapper'
+import SimpleFormWrapper from './SimpleFormWrapper.vue'
 
-SimpleFormWrapper.install = function (Vue) {
+function install(Vue) {
   Vue.component(SimpleFormWrapper.name, SimpleFormWrapper)
 }
+
+SimpleFormWrapper.install = install
 
 export default SimpleFormWrapper

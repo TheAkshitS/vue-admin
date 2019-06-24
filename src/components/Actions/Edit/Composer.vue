@@ -1,5 +1,5 @@
 <script>
-import Edit from './Edit'
+import Edit from './Edit.vue'
 import composeView from '../compose'
 
 export default {

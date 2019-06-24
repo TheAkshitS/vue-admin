@@ -1,5 +1,5 @@
 <script>
-import Resource from './Resource'
+import Resource from './Resource.vue'
 
 export default {
   functional: true,

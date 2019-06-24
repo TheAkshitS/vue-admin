@@ -1,7 +1,9 @@
-import List from './Composer'
+import List from './Composer.vue'
 
-List.install = function (Vue) {
+function install(Vue) {
   Vue.component(List.name, List)
 }
+
+List.install = install
 
 export default List

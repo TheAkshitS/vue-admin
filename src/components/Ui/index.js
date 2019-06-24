@@ -1,7 +1,9 @@
-import Ui from './src/ui'
+import Ui from './src/ui.vue'
 
-Ui.install = function (Vue) {
+function install(Vue) {
   Vue.component(Ui.name, Ui)
 }
+
+Ui.install = install
 
 export default Ui

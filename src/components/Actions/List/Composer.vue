@@ -1,5 +1,5 @@
 <script>
-import List from './List'
+import List from './List.vue'
 import composeView from '../compose'
 
 export default {

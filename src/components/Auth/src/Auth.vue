@@ -104,10 +104,10 @@ export default {
   .background-image {
     background-image: url(../../../../public/background.png);
     height: 90vh;
-       -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-         -o-background-size: 100% 100%;           /* Opera 9.5 */
-    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-            background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+    -moz-background-size:    100% 100%; /* Gecko 1.9.2 (Firefox 3.6) */
+    -o-background-size:      100% 100%; /* Opera 9.5 */
+    -webkit-background-size: 100% 100%; /* Safari 3.0 */
+    background-size: 100% 100%; /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
     margin: 0;
     min-width: 100%;
   }

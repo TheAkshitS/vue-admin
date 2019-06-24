@@ -1,31 +1,34 @@
 <template>
   <v-card :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER.with({ resourceName, view })}`">
     <Spinner :spin="isLoading"></Spinner>
-    <div class="text-xs-center d-flex right" :name="`${UI_NAMES.RESOURCE_VIEW_ACTIONS_CONTAINER.with({ resourceName, view })}`">
-        <EditButton
-          :resourceId="$route.params.id"
-          :resourceName="resourceName">
-        </EditButton>
-        <Delete
-          :resourceId="$route.params.id"
-          :resourceName="resourceName">
-        </Delete>
+    <div class="text-xs-center d-flex right"
+      :name="`${UI_NAMES.RESOURCE_VIEW_ACTIONS_CONTAINER.with({ resourceName, view })}`">
+      <EditButton
+        :resourceId="$route.params.id"
+        :resourceName="resourceName">
+      </EditButton>
+      <Delete
+        :resourceId="$route.params.id"
+        :resourceName="resourceName">
+      </Delete>
     </div>
-    <v-card-title primary-title :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
+    <v-card-title primary-title
+      :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
       <h3 class="headline mb-0 text-capitalize">
         {{UI_CONTENT.RESOURCE_VIEW_TITLE.with({ resourceName, view })}}
       </h3>
     </v-card-title>
     <v-card-text :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELDS.with({ resourceName, view })}`">
-      <component
-        :name="componentName(field)"
-        v-for="field in fields"
-        v-if="resourceShow !== undefined"
-        :key="key(label(field))"
-        :is="type(field.type)"
-        v-bind:content="resourceShow[label(field)]"
-        v-bind="args(field)">
-      </component>
+      <span v-if="resourceShow !== undefined">
+        <component
+          :name="componentName(field)"
+          v-for="field in fields"
+          :key="key(label(field))"
+          :is="type(field.type)"
+          v-bind:content="resourceShow[label(field)]"
+          v-bind="args(field)">
+        </component>
+      </span>
     </v-card-text>
   </v-card>
 </template>
@@ -109,7 +112,8 @@ export default {
     },
 
     componentName(field) {
-      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName: this.resourceName, view: this.view, field: this.label(field) })
+      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD
+        .with({ resourceName: this.resourceName, view: this.view, field: this.label(field) })
     },
   },
 

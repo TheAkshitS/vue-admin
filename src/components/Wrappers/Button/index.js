@@ -1,7 +1,9 @@
-import ButtonWrapper from './ButtonWrapper'
+import ButtonWrapper from './ButtonWrapper.vue'
 
-ButtonWrapper.install = function (Vue) {
+function install(Vue) {
   Vue.component(ButtonWrapper.name, ButtonWrapper)
 }
+
+ButtonWrapper.install = install
 
 export default ButtonWrapper

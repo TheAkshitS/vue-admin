@@ -1,6 +1,4 @@
-import {
-  validateRedirect,
-} from './components/resource'
+import validateRedirect from './components/resource'
 
 function validateSchema(prop, schema) {
   const validations = {
@@ -10,6 +8,4 @@ function validateSchema(prop, schema) {
   return validations[prop](schema)
 }
 
-export {
-  validateSchema,
-}
+export default validateSchema

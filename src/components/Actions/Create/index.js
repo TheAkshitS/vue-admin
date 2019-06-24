@@ -1,7 +1,9 @@
-import Create from './Composer'
+import Create from './Composer.vue'
 
-Create.install = function (Vue) {
+function install(Vue) {
   Vue.component(Create.name, Create)
 }
+
+Create.install = install
 
 export default Create

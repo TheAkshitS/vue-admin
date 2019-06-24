@@ -1,7 +1,9 @@
-import EditButton from './EditButton'
+import EditButton from './EditButton.vue'
 
-EditButton.install = function (Vue) {
+function install(Vue) {
   Vue.component(EditButton.name, EditButton)
 }
+
+EditButton.install = install
 
 export default EditButton

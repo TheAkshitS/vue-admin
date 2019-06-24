@@ -26,7 +26,10 @@ function withParams(key) {
  */
 function buildMessage(message, args) {
   const paramKeys = Object.keys(args)
-  return paramKeys.reduce((parsedMessage, paramKey) => parsedMessage.replace(withParams(paramKey), args[paramKey]), message)
+  const parsedMessageReplacement = (parsedMessage, paramKey) => (
+    parsedMessage.replace(withParams(paramKey), args[paramKey])
+  )
+  return paramKeys.reduce(parsedMessageReplacement, message)
 }
 
 /**

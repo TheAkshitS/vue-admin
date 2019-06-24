@@ -1,7 +1,9 @@
-import Admin from './src/admin'
+import Admin from './src/admin.vue'
 
-Admin.install = function (Vue) {
+function install(Vue) {
   Vue.component(Admin.name, Admin)
 }
+
+Admin.install = install
 
 export default Admin

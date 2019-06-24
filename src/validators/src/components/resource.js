@@ -16,7 +16,7 @@ function formatResult(result) {
  *
  * @return {Object} A Joi object with the validation review
  */
-export const validateRedirect = (redirect) => {
+export default (redirect) => {
   const joiResult = Joi.object().keys({
     views: Joi.object().keys({
       create: Joi.string().valid(['edit', 'list', 'show']),

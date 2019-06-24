@@ -1,7 +1,9 @@
-import Input from './src/input'
+import Input from './src/input.vue'
 
-Input.install = function (Vue) {
+function install(Vue) {
   Vue.component(Input.name, Input)
 }
+
+Input.install = install
 
 export default Input

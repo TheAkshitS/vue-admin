@@ -1,7 +1,8 @@
 /**
  * Create Route Hooks - A function used to create route hooks
  *
- * @param {Boolean}   isPublic               Indicates whether or not a route needs authentication to be visited
+ * @param {Boolean}   isPublic               Indicates whether or not a route needs authentication
+ *                                           to be visited
  * @param {Array}     permissions            An array of route permissions as Strings
  * @param {Object}    store                  A group of store auth actions
  * @param {String}    userPermissionsField   The name of the permissions field in a user object
@@ -26,30 +27,20 @@ export default ({
           path: '/login',
           params: { nextUrl: to.fullPath },
         })
-      } else {
-        // User is authenticated
-        if (permissions.length > 0) {
-          // Route has permissions restriction
+      } else if (permissions.length > 0) {
+        // Route has permissions restriction
 
-          const user = store.getUser()
-          const { [userPermissionsField]: userPermissions } = user
-          const userHasPermissions = permissions.some(permission => userPermissions.indexOf(permission) > -1)
-          if (userHasPermissions) {
-            // User is authenticated and has route permissions
-            next()
-          } else {
-            // User is authenticated but does not have route permissions
-            next('/unauthorized')
-          }
-        } else {
-          // Route has no permissions restriction
-          next()
+        const user = store.getUser()
+        const { [userPermissionsField]: userPermissions } = user
+        const hasPermissions = permission => userPermissions.indexOf(permission) > -1
+        const userHasPermissions = permissions.some(hasPermissions)
+        if (!userHasPermissions) {
+          // User is authenticated but does not have route permissions
+          next('/unauthorized')
         }
       }
-    } else {
-      // It's a public route
-      next()
     }
+    next()
   }
 
   return {

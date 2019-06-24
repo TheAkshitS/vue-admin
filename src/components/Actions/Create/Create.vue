@@ -1,7 +1,8 @@
 <template>
   <v-card :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER.with({ resourceName, view })}`">
     <Spinner :spin="isLoading"></Spinner>
-    <v-card-title primary-title :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
+    <v-card-title primary-title
+      :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
       <h3 class="headline mb-0 text-capitalize">
         {{UI_CONTENT.RESOURCE_VIEW_TITLE.with({ resourceName, view })}}
       </h3>
@@ -11,7 +12,11 @@
         <v-layout wrap>
           <v-flex xs8>
             <component
-              :name="`${UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD.with({ resourceName, view, field: label(field) })}`"
+              :name="`${
+                UI_NAMES
+                  .RESOURCE_VIEW_ELEMENT_FIELD
+                  .with({ resourceName, view, field: label(field) })
+              }`"
               v-for="field in fields"
               :key="key(label(field))"
               :is="type(field.type)"

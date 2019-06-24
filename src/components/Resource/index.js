@@ -1,8 +1,10 @@
 
-import Resource from './src/Composer'
+import Resource from './src/Composer.vue'
 
-Resource.install = function (Vue) {
+function install(Vue) {
   Vue.component(Resource.name, Resource)
 }
+
+Resource.install = install
 
 export default Resource

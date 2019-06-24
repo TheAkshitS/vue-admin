@@ -7,7 +7,10 @@ export default {
     addRoute({ routes }, { path, name, addedRouteCallback }) {
       let matchingPathRouteIndex
       const newRoute = { path, name }
-      routes.forEach((route, index) => (route.name === name) && (matchingPathRouteIndex = index))
+      const searchMatchingIndex = (route, index) => {
+        if (route.name === name) matchingPathRouteIndex = index
+      }
+      routes.forEach(searchMatchingIndex)
       if (matchingPathRouteIndex !== undefined) {
         routes[matchingPathRouteIndex] = newRoute
       } else {

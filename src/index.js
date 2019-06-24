@@ -17,7 +17,7 @@ const components = [
   Create, Delete, Edit, EditButton, List, Show,
 ]
 
-const install = function (Vue) {
+const install = (Vue) => {
   components.forEach((component) => {
     Vue.component(component.name, component)
   })

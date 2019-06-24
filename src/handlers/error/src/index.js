@@ -1,7 +1,5 @@
 import ERROR_MESSAGES from '@constants/error.messages'
-import {
-  validateSchema,
-} from '@validators'
+import validateSchema from '@validators'
 
 /**
  * handleEmptyProp - Given a prop, throws an error with the proper user

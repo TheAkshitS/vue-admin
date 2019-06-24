@@ -1,5 +1,5 @@
 <script>
-import Show from './Show'
+import Show from './Show.vue'
 import composeView from '../compose'
 
 export default {

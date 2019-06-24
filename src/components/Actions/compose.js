@@ -1,27 +1,5 @@
 
 /**
- * Compose - Given a function that creates VNodes and a context, composes the
- * View using it's default values
- *
- * @param {Function} createElement  The first param of the render function
- * @param {Object}   context        The second param of the render function
- * @param {Object}   component      A view component to be wrapped
- * @param {String}   view           The name of the view that is being composed
- *
- * @return {VNode} A Vue component
- */
-export default (createElement, context, { component }) => {
-  const { composer } = require(`./${component.name}/defaults.js`).default()
-  const { parentPropKeys, childrenAdapter } = composer
-
-  return compose(createElement, context, {
-    component,
-    parentPropKeys,
-    childrenAdapter,
-  })
-}
-
-/**
  * compose - Given a createElement function, a context and a set of options,
  * composes the 'component' using the given options
  *
@@ -73,4 +51,26 @@ function compose(createElement, context, {
   }
   // The View is already being instanced by Resource as an Array
   return createElement(component, context)
+}
+
+/**
+ * Compose - Given a function that creates VNodes and a context, composes the
+ * View using it's default values
+ *
+ * @param {Function} createElement  The first param of the render function
+ * @param {Object}   context        The second param of the render function
+ * @param {Object}   component      A view component to be wrapped
+ * @param {String}   view           The name of the view that is being composed
+ *
+ * @return {VNode} A Vue component
+ */
+export default (createElement, context, { component }) => {
+  const { composer } = require(`./${component.name}/defaults.js`).default()
+  const { parentPropKeys, childrenAdapter } = composer
+
+  return compose(createElement, context, {
+    component,
+    parentPropKeys,
+    childrenAdapter,
+  })
 }

@@ -1,26 +1,39 @@
 <template>
   <v-card :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER.with({ resourceName, view })}`">
     <Spinner :spin="isLoading"></Spinner>
-    <v-card-title primary-title :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
-      <h3 class="headline mb-0 text-capitalize">{{UI_CONTENT.RESOURCE_VIEW_TITLE.with({ resourceName })}}</h3>
+    <v-card-title primary-title
+      :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE.with({ resourceName, view })}`">
+      <h3 class="headline mb-0 text-capitalize">
+        {{UI_CONTENT.RESOURCE_VIEW_TITLE.with({ resourceName })}}
+      </h3>
     </v-card-title>
     <v-form>
-      <v-card-text :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELDS.with({ resourceName, view })}`">
+      <v-card-text
+        :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELDS.with({ resourceName, view })}`">
         <v-layout wrap>
           <v-flex xs8>
-            <component
-              :name="`${UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName, view, field: label(field) })}`"
-              v-if="entity"
-              v-for="field in fields"
-              :key="key(label(field))"
-              :is="type(field.type)"
-              v-bind="args(field)"
-              :value="entity[label(field)]"
-              @change="storeValue($event, label(field))">
-            </component>
+            <span v-if="entity">
+              <component
+                :name="`${
+                  UI_NAMES
+                    .RESOURCE_VIEW_CONTAINER_FIELD
+                    .with({ resourceName, view, field: label(field) })
+                }`"
+                v-for="field in fields"
+                :key="key(label(field))"
+                :is="type(field.type)"
+                v-bind="args(field)"
+                :value="entity[label(field)]"
+                @change="storeValue($event, label(field))">
+              </component>
+            </span>
           </v-flex>
           <v-flex xs12>
-            <v-btn :name="`${UI_NAMES.RESOURCE_VIEW_SUBMIT_BUTTON.with({ resourceName, view })}`" color="success" v-on:click="submit">{{UI_CONTENT.EDIT_SUBMIT_BUTTON}}</v-btn>
+            <v-btn
+              :name="`${UI_NAMES.RESOURCE_VIEW_SUBMIT_BUTTON.with({ resourceName, view })}`"
+              color="success" v-on:click="submit">
+              {{UI_CONTENT.EDIT_SUBMIT_BUTTON}}
+            </v-btn>
           </v-flex>
         </v-layout>
       </v-card-text>

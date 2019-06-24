@@ -96,24 +96,6 @@ export default ({
         },
         ...routeHooks,
       }
-
-      // list is a Component
-      return {
-        path: resourcePath,
-        name,
-        component: list,
-        props: {
-          resourceName,
-          hasShow,
-          hasCreate,
-          hasEdit,
-          resourceIdName,
-          // This could be refactored into a vue mixin, check #52 - @sgobotta
-          va: {
-            ...utils,
-          },
-        },
-      }
     },
 
     show: ({ wrapper }) => {
@@ -163,20 +145,6 @@ export default ({
           permissions,
         },
         ...routeHooks,
-      }
-
-      // show is a user's custom component
-      return {
-        path: `${resourcePath}/show/:id`,
-        name,
-        component: show,
-        props: {
-          resourceName,
-          // This could be refactored into a vue mixin, check #52 - @sgobotta
-          va: {
-            ...utils,
-          },
-        },
       }
     },
 
@@ -231,20 +199,6 @@ export default ({
         },
         ...routeHooks,
       }
-
-      // create is a user's custom component
-      return {
-        path: `${resourcePath}/create`,
-        name,
-        component: create,
-        props: {
-          // This could be refactored into a vue mixin, check #52 - @sgobotta
-          resourceName,
-          va: {
-            ...utils,
-          },
-        },
-      }
     },
 
     edit: ({ wrapper }) => {
@@ -297,20 +251,6 @@ export default ({
           permissions,
         },
         ...routeHooks,
-      }
-
-      // edit is a user's custom component
-      return {
-        path: `${resourcePath}/edit/:id`,
-        name,
-        component: edit,
-        // This could be refactored into a vue mixin, check #52 - @sgobotta
-        props: {
-          resourceName,
-          va: {
-            ...utils,
-          },
-        },
       }
     },
   }

@@ -63,9 +63,10 @@
         "error",
         "never"
       ],
-
       "import/no-dynamic-require": "off",
-      "global-require": "off"
+      "global-require": "off",
+      "no-param-reassign": 0,
+      "import/no-extraneous-dependencies": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"

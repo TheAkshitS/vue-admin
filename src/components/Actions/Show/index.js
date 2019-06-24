@@ -1,7 +1,9 @@
-import Show from './Composer'
+import Show from './Composer.vue'
 
-Show.install = function (Vue) {
+function install(Vue) {
   Vue.component(Show.name, Show)
 }
+
+Show.install = install
 
 export default Show

@@ -11,19 +11,19 @@ import {
 export default () => {
   const component = 'Resource'
 
-  function _parseResponse(response) {
+  function parseResponse(response) {
     const { data } = response
     return Object.assign({}, response, { data })
   }
 
-  function _parseResponses() {
+  function parseResponsesFunc() {
     return {
-      set parseList(response) { return _parseResponse(response) },
-      set parseSingle(response) { return _parseResponse(response) },
+      set parseList(response) { return parseResponse(response) },
+      set parseSingle(response) { return parseResponse(response) },
     }
   }
 
-  function _redirect() {
+  function redirectFunc() {
     return {
       views: {
         create: 'list',
@@ -38,17 +38,17 @@ export default () => {
   const apiUrl = handleEmptyProp({ prop: 'apiUrl', at: component })
   const list = handleEmptyProp({ prop: 'list', at: component })
   const name = handleEmptyProp({ prop: 'name', at: component })
-  const parseResponses = _parseResponses
-  const redirect = _redirect
+  const parseResponses = parseResponsesFunc
+  const redirect = redirectFunc
   const resourceIdName = 'id'
   const userPermissionsField = 'permissions'
 
   /**
    * Resource default validations
    */
-  function validateRedirect(redirect) {
+  function validateRedirect(redirectToValidate) {
     return handleSchemaValidation({
-      schema: redirect,
+      schema: redirectToValidate,
       prop: 'redirect',
       at: component,
     })

@@ -40,14 +40,26 @@
         <td class="text-xs-left"
           v-for="field in fields"
           :key="key(label(field))"
-          :name="`${UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD.with({ resourceName, view, field: label(field), index: props.index })}`"
+          :name="`${
+            UI_NAMES
+              .RESOURCE_VIEW_ELEMENT_FIELD
+              .with({ resourceName, view, field: label(field), index: props.index })
+          }`"
           >
           <router-link
-            :name="`${UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD.with({ resourceName, view, field: resourceIdName, index: props.index })}`"
+            :name="`${
+              UI_NAMES
+                .RESOURCE_VIEW_ELEMENT_FIELD
+                .with({ resourceName, view, field: resourceIdName, index: props.index })
+            }`"
             v-if="label(field) === resourceIdName && hasShow"
             :to="{ name: `${resourceName}/show`, params: { id: props.item[resourceIdName] } }">
             <component
-              :name="`${UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD.with({ resourceName, view, field: label(field), index: props.index })}`"
+              :name="`${
+                UI_NAMES
+                  .RESOURCE_VIEW_ELEMENT_FIELD
+                  .with({ resourceName, view, field: label(field), index: props.index })
+              }`"
               :is="type(field.type)"
               v-bind:content="props.item[label(field)]"
               v-bind="args(field)">
@@ -55,7 +67,11 @@
           </router-link>
           <span v-else>
             <component
-              :name="`${UI_NAMES.RESOURCE_VIEW_ELEMENT_FIELD.with({ resourceName, view, field: label(field), index: props.index })}`"
+              :name="`${
+                UI_NAMES
+                  .RESOURCE_VIEW_ELEMENT_FIELD
+                  .with({ resourceName, view, field: label(field), index: props.index })
+              }`"
               :is="type(field.type)"
               v-bind:content="props.item[label(field)]"
               v-bind="args(field)">
@@ -141,12 +157,14 @@ export default {
           value: this.label(field),
         })
       })
-      this.hasEdit && newHeaders.push({
-        text: 'Edit',
-        align: 'center',
-        sortable: false,
-        width: 10,
-      })
+      if (this.hasEdit) {
+        newHeaders.push({
+          text: 'Edit',
+          align: 'center',
+          sortable: false,
+          width: 10,
+        })
+      }
       newHeaders.push({
         text: 'Delete',
         align: 'center',

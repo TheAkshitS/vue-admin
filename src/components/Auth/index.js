@@ -1,7 +1,9 @@
-import Auth from './src/Auth'
+import Auth from './src/Auth.vue'
 
-Auth.install = function (Vue) {
+function install(Vue) {
   Vue.component(Auth.name, Auth)
 }
+
+Auth.install = install
 
 export default Auth

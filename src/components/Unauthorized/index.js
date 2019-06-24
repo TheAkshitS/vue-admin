@@ -1,8 +1,10 @@
 
-import Unauthorized from './unauthorized'
+import Unauthorized from './unauthorized.vue'
 
-Unauthorized.install = function (Vue) {
+function install(Vue) {
   Vue.component(Unauthorized.name, Unauthorized)
 }
+
+Unauthorized.install = install
 
 export default Unauthorized

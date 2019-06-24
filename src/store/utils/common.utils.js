@@ -11,7 +11,9 @@ import Router from '@router'
  *
  * @return {Object} a 'resourceName' object with updated data from the form.
  */
-export const getEntityForm = ({ resourceName, formType, store }) => store.state.entities[formType][resourceName]
+export const getEntityForm = ({ resourceName, formType, store }) => (
+  store.state.entities[formType][resourceName]
+)
 
 /**
  * getEntity - Given a resource name, calls the store to get a single element.

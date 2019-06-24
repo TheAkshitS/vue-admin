@@ -1,7 +1,9 @@
-import Edit from './Composer'
+import Edit from './Composer.vue'
 
-Edit.install = function (Vue) {
+function install(Vue) {
   Vue.component(Edit.name, Edit)
 }
+
+Edit.install = install
 
 export default Edit
