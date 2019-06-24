@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import ERROR_MESSAGES from '@constants/error.messages'
-import { validateSchema } from '@validators'
+import validateSchema from '@validators'
 
 describe('Resource.vue', () => {
   const subject = 'Resource'
