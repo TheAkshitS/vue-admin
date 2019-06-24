@@ -13,4 +13,4 @@ export default {
     resourceName,
     path = '',
   }) => `${Cypress.config().baseUrl}/#/${resourceName}/${path}`,
-};
+}

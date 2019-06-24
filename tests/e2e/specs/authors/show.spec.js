@@ -12,7 +12,7 @@ describe('Authors: Show Test', () => {
   })
 
   before('Search an author to show', () => {
-    cy.fixture(resourceName).then(fixture => {
+    cy.fixture(resourceName).then((fixture) => {
       // Takes the first element of the fixture to use as subject
       Object.assign(author, fixture[0])
     })
@@ -39,7 +39,7 @@ describe('Authors: Show Test', () => {
       constant: UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE,
       constantParams: { resourceName, view },
       elementType: 'div',
-      elementProp: 'name'
+      elementProp: 'name',
     }).should('contain', showViewTitleText)
   })
 
@@ -61,13 +61,13 @@ describe('Authors: Show Test', () => {
 
   /**
   * Helper functions
-  **/
-  function queryToElementWith(containerType, containerParams){
+  * */
+  function queryToElementWith(containerType, containerParams) {
     const containerName = UI_NAMES[containerType].with(containerParams)
     return queryElementByProp({
       type: 'div',
       prop: 'name',
-      value: containerName
+      value: containerName,
     })
   }
 
@@ -81,7 +81,7 @@ describe('Authors: Show Test', () => {
         const fieldContainerElement = queryToElementWith('RESOURCE_VIEW_CONTAINER_FIELD', {
           resourceName,
           view,
-          field
+          field,
         })
         const fieldContainer = fieldsContainerRes.find(fieldContainerElement)
         expect(fieldContainer).to.contain(author[field])

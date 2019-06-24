@@ -1,7 +1,7 @@
-import ERROR_MESSAGES from '@constants/error.messages';
+import ERROR_MESSAGES from '@constants/error.messages'
 import {
   validateSchema,
-} from '@validators';
+} from '@validators'
 
 /**
  * handleEmptyProp - Given a prop, throws an error with the proper user
@@ -16,9 +16,9 @@ export const handleEmptyProp = ({
   prop,
   at,
 }) => () => {
-  const { UNDEFINED_PROPERTY } = ERROR_MESSAGES;
-  throw new Error(UNDEFINED_PROPERTY.with({ prop, at }));
-};
+  const { UNDEFINED_PROPERTY } = ERROR_MESSAGES
+  throw new Error(UNDEFINED_PROPERTY.with({ prop, at }))
+}
 
 /**
  * handleSchemaValidation - Given a schema, a prop and a component name, returns
@@ -35,11 +35,11 @@ export const handleSchemaValidation = ({
   prop,
   at,
 }) => {
-  const validation = validateSchema(prop, schema);
+  const validation = validateSchema(prop, schema)
   if (validation.error) {
-    const { INVALID_SCHEMA } = ERROR_MESSAGES;
-    const { details } = validation.error;
-    throw new Error(INVALID_SCHEMA.with({ prop, at, details }));
+    const { INVALID_SCHEMA } = ERROR_MESSAGES
+    const { details } = validation.error
+    throw new Error(INVALID_SCHEMA.with({ prop, at, details }))
   }
-  return validation;
-};
+  return validation
+}

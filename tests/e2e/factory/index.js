@@ -5,7 +5,7 @@ import {
 } from './resources'
 import {
   createAuthResponse,
-  createCredentials
+  createCredentials,
 } from './auth'
 import {
   createUser,

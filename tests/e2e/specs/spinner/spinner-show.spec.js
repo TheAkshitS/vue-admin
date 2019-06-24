@@ -10,7 +10,7 @@ describe('Spinner on a Show View Test', () => {
   })
 
   before('Search an article to show', () => {
-    cy.fixture(resourceName).then(fixture => {
+    cy.fixture(resourceName).then((fixture) => {
       // Takes the first element of the fixture to use as subject
       Object.assign(article, fixture[0])
     })
@@ -33,7 +33,7 @@ describe('Spinner on a Show View Test', () => {
     const spinnerContainer = cy.getElement({
       constant: UI_NAMES.SPINNER_CONTAINER,
       elementType: 'div',
-      elementProp: 'id'
+      elementProp: 'id',
     })
 
     spinnerContainer.should('not.be.visible')
@@ -46,10 +46,9 @@ describe('Spinner on a Show View Test', () => {
     const spinnerContainer = cy.getElement({
       constant: UI_NAMES.SPINNER_CONTAINER,
       elementType: 'div',
-      elementProp: 'id'
+      elementProp: 'id',
     })
 
     spinnerContainer.should('be.visible')
   })
-
 })

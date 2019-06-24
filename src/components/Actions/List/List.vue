@@ -86,8 +86,8 @@
 import UI_CONTENT from '@constants/ui.content.default'
 import UI_NAMES from '@constants/ui.element.names'
 import UI_ELEMENTS from '@constants/ui.elements.props'
-import { Input, TextField, Spinner } from "../../UiComponents";
-import { EditButton, Delete } from "../../Actions";
+import { Input, TextField, Spinner } from '../../UiComponents'
+import { EditButton, Delete } from '..'
 
 export default {
   name: 'List',
@@ -119,7 +119,7 @@ export default {
     },
   },
   data() {
-    const { rowsPerPage } = UI_ELEMENTS;
+    const { rowsPerPage } = UI_ELEMENTS
     return {
       view: 'list',
       UI_CONTENT,
@@ -128,70 +128,70 @@ export default {
         page: 1,
         rowsPerPage,
       },
-    };
+    }
   },
   computed: {
     headers() {
-      const newHeaders = [];
+      const newHeaders = []
       this.fields.forEach((field) => {
         newHeaders.push({
           text: field.headerText || this.label(field),
           align: field.alignHeader || 'left',
           sortable: field.sortable || false,
           value: this.label(field),
-        });
-      });
+        })
+      })
       this.hasEdit && newHeaders.push({
         text: 'Edit',
         align: 'center',
         sortable: false,
         width: 10,
-      });
+      })
       newHeaders.push({
         text: 'Delete',
         align: 'center',
         sortable: false,
         width: 10,
-      });
-      return newHeaders;
+      })
+      return newHeaders
     },
-    resourceList: function() {
+    resourceList() {
       return this.va.getList()
     },
     isLoading() {
       return this.$store.getters['requests/isLoading']
-    }
+    },
   },
 
   components: {
-    Input: Input,
-    TextField: TextField,
-    Delete: Delete,
-    EditButton: EditButton,
-    Spinner: Spinner
+    Input,
+    TextField,
+    Delete,
+    EditButton,
+    Spinner,
   },
 
   methods: {
     type(type) {
-      return type || 'TextField';
+      return type || 'TextField'
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`;
+      return `${this.resourceName}_${label}`
     },
 
     label(field) {
-      return field.label || field;
+      return field.label || field
     },
 
     args(field) {
-      const args = typeof (field) === 'string' ? { label: field } : field;
-      return args;
+      const args = typeof (field) === 'string' ? { label: field } : field
+      return args
     },
   },
 
   created() {
-    this.va.fetchList();
+    this.va.fetchList()
   },
-};
+}
 </script>

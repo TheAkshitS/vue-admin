@@ -3,11 +3,9 @@
  *
  * @return {Object} The state for the auth store
  */
-export default () => {
-  return {
-    error: '',
-    isAuthenticated: false,
-    status: 'idle',
-    user: {},
-  }
-}
+export default () => ({
+  error: '',
+  isAuthenticated: false,
+  status: 'idle',
+  user: {},
+})

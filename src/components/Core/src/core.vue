@@ -17,7 +17,7 @@ export default {
     title: String,
   },
   components: {},
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

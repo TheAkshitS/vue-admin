@@ -5,7 +5,7 @@ describe('Auth Test', () => {
   const view = 'login'
   const user = {
     username: 'vue-admin@camba.coop',
-    password: '123456'
+    password: '123456',
   }
 
   beforeEach('Visits the auth url', () => {
@@ -21,7 +21,7 @@ describe('Auth Test', () => {
     const createViewTitleContainer = cy.getElement({
       constant: UI_NAMES.AUTH_CONTAINER_TITLE,
       elementType: 'div',
-      elementProp: 'name'
+      elementProp: 'name',
     })
 
     createViewTitleContainer.should('contain', createViewTitleText)
@@ -31,7 +31,7 @@ describe('Auth Test', () => {
     const input = cy.getElement({
       constant: UI_NAMES.AUTH_USERNAME_INPUT,
       elementType: 'input',
-      elementProp: 'name'
+      elementProp: 'name',
     })
 
     input.type(user.username)
@@ -42,7 +42,7 @@ describe('Auth Test', () => {
     const input = cy.getElement({
       constant: UI_NAMES.AUTH_PASSWORD_INPUT,
       elementType: 'input',
-      elementProp: 'name'
+      elementProp: 'name',
     })
 
     input.type(user.password)
@@ -53,7 +53,7 @@ describe('Auth Test', () => {
     const button = cy.getElement({
       constant: UI_NAMES.AUTH_SIGN_IN_BUTTON,
       elementType: 'button',
-      elementProp: 'name'
+      elementProp: 'name',
     })
     button.click()
     button.should('be.disabled')

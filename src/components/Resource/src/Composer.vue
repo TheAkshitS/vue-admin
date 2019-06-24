@@ -1,5 +1,5 @@
 <script>
-import Resource from './Resource';
+import Resource from './Resource'
 
 export default {
   functional: true,
@@ -12,20 +12,20 @@ export default {
     if (!isEmpty) {
       Object.keys(slots).reduce((prevValue, nextValue) => {
         const {
-          data: { attrs: { permissions = [], isPublic = false } }
+          data: { attrs: { permissions = [], isPublic = false } },
         } = children.find(c => c.data.slot === nextValue)
         return Object.assign(prevValue, {
           [nextValue]: {
             component: prevValue[nextValue][0].data.attrs.component,
             isPublic,
-            permissions
-          }
+            permissions,
+          },
         })
       }, slots)
       Object.assign(props, slots)
     }
     // Resource is rendered with props, either having slots or not.
-    return createElement(Resource, { props });
+    return createElement(Resource, { props })
   },
-};
+}
 </script>

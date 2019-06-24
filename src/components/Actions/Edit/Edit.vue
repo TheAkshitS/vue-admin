@@ -31,15 +31,15 @@
 <script>
 import UI_CONTENT from '@constants/ui.content.default'
 import UI_NAMES from '@constants/ui.element.names'
-import { mapState } from "vuex";
-import { Input, TextField, Spinner } from "../../UiComponents"
+import { mapState } from 'vuex'
+import { Input, TextField, Spinner } from '../../UiComponents'
 
 export default {
   name: 'Edit',
   components: {
-    Input: Input,
-    TextField: TextField,
-    Spinner: Spinner
+    Input,
+    TextField,
+    Spinner,
   },
   props: {
     resourceName: {
@@ -60,7 +60,7 @@ export default {
       view: 'edit',
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
   computed: {
     ...mapState([
@@ -70,47 +70,47 @@ export default {
       return this.va.getEntity()
     },
     isLoading() {
-      return this.$store.getters['requests/isLoading'];
-    }
+      return this.$store.getters['requests/isLoading']
+    },
   },
 
   methods: {
     storeValue(value, resourceKey) {
-      this.va.updateEntity({ resourceKey, value });
+      this.va.updateEntity({ resourceKey, value })
     },
 
     storeValues() {
-      this.fields.forEach(field => {
+      this.fields.forEach((field) => {
         const label = this.label(field)
         this.storeValue(this.entity[label], label)
       })
     },
 
     submit() {
-      this.va.submitEntity();
+      this.va.submitEntity()
     },
 
     type(type) {
-      return type || 'Input';
+      return type || 'Input'
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`;
+      return `${this.resourceName}_${label}`
     },
 
     label(field) {
-      return field.label || field;
+      return field.label || field
     },
 
     args(field) {
-      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field;
-      return args;
+      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field
+      return args
     },
   },
 
   created() {
     this.va.fetchEntity().then(this.storeValues)
-  }
+  },
 
-};
+}
 </script>

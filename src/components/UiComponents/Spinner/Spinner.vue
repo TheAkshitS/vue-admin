@@ -14,20 +14,20 @@
 import UI_NAMES from '@constants/ui.element.names'
 
 export default {
-  name: "Spinner",
+  name: 'Spinner',
   props: {
-    spin: Boolean
+    spin: Boolean,
   },
   computed: {
     loading() {
       return this.spin
-    }
+    },
   },
   data() {
     return {
-      UI_NAMES
+      UI_NAMES,
     }
-  }
+  },
 }
 </script>
 <style scoped>

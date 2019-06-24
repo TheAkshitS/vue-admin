@@ -36,15 +36,15 @@
 <script>
 import UI_CONTENT from '@constants/ui.content.default'
 import UI_NAMES from '@constants/ui.element.names'
-import { mapState } from "vuex";
-import { Input, TextField, Spinner } from "../../UiComponents"
+import { mapState } from 'vuex'
+import { Input, TextField, Spinner } from '../../UiComponents'
 
 export default {
   name: 'Create',
   components: {
-    Input: Input,
-    TextField: TextField,
-    Spinner: Spinner
+    Input,
+    TextField,
+    Spinner,
   },
   props: {
     resourceName: {
@@ -65,47 +65,47 @@ export default {
       view: 'create',
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
 
   computed: {
     ...mapState([
-      "route" // vuex-router-sync
+      'route', // vuex-router-sync
     ]),
     isLoading() {
       return this.$store.getters['requests/isLoading']
-    }
+    },
   },
 
-  mounted: function() {
+  mounted() {
     this.va.initEntity()
   },
 
   methods: {
     storeValue(value, resourceKey) {
-      this.va.updateEntity({ resourceKey, value });
+      this.va.updateEntity({ resourceKey, value })
     },
 
     submit() {
-      this.va.submitEntity();
+      this.va.submitEntity()
     },
 
     type(type) {
-      return type || 'Input';
+      return type || 'Input'
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`;
+      return `${this.resourceName}_${label}`
     },
 
     label(field) {
-      return field.label || field;
+      return field.label || field
     },
 
     args(field) {
-      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field;
-      return args;
+      const args = typeof (field) === 'string' ? { label: field, placeHolder: field } : field
+      return args
     },
   },
-};
+}
 </script>

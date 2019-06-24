@@ -14,11 +14,11 @@ export default {
    * Auth component
    */
 
-   AUTH_CONTAINER: 'va-login-container',
-   AUTH_CONTAINER_TITLE: 'va-login-container-title',
-   AUTH_USERNAME_INPUT: 'va-login-username',
-   AUTH_PASSWORD_INPUT: 'va-login-password',
-   AUTH_SIGN_IN_BUTTON: 'va-login-submit-button',
+  AUTH_CONTAINER: 'va-login-container',
+  AUTH_CONTAINER_TITLE: 'va-login-container-title',
+  AUTH_USERNAME_INPUT: 'va-login-username',
+  AUTH_PASSWORD_INPUT: 'va-login-password',
+  AUTH_SIGN_IN_BUTTON: 'va-login-submit-button',
 
   /**
    * List
@@ -80,24 +80,22 @@ export default {
     with: ({ resourceName, view }) => `${resourceName}-${view}-edit-button`,
   },
 
-   RESOURCE_DELETE_BUTTON: {
-     with: ({ resourceName, index }) => {
-       return index !== undefined
-       ? `${resourceName}-delete-button-${index}`
-       : `${resourceName}-delete-button`
-     }
-   },
+  RESOURCE_DELETE_BUTTON: {
+    with: ({ resourceName, index }) => (index !== undefined
+      ? `${resourceName}-delete-button-${index}`
+      : `${resourceName}-delete-button`),
+  },
 
   /**
    * Unauthorized
    */
-   UNAUTHORIZED_DEFAULT_CONTAINER_HEADER: 'unauthorized-default-container-header',
-   UNAUTHORIZED_DEFAULT_CONTAINER_HEADER_DEFAULT: 'unauthorized-default-container-header-default',
-   UNAUTHORIZED_DEFAULT_CONTAINER_MESSAGE: 'unauthorized-default-container-message',
-   UNAUTHORIZED_DEFAULT_CONTAINER_MESSAGE_DEFAULT: 'unauthorized-default-container-message-default',
+  UNAUTHORIZED_DEFAULT_CONTAINER_HEADER: 'unauthorized-default-container-header',
+  UNAUTHORIZED_DEFAULT_CONTAINER_HEADER_DEFAULT: 'unauthorized-default-container-header-default',
+  UNAUTHORIZED_DEFAULT_CONTAINER_MESSAGE: 'unauthorized-default-container-message',
+  UNAUTHORIZED_DEFAULT_CONTAINER_MESSAGE_DEFAULT: 'unauthorized-default-container-message-default',
 
   /**
    * Default Spinner
    */
-  SPINNER_CONTAINER: 'spinner-container'
+  SPINNER_CONTAINER: 'spinner-container',
 }

@@ -1,4 +1,4 @@
-import { initialResourcesRoutes } from './common.utils';
+import { initialResourcesRoutes } from './common.utils'
 
 /**
  * Anonymous Function - Creates a simualtion of initial vuex crud getters
@@ -10,27 +10,27 @@ export default () => {
   const initialResources = [
     'articles',
     'magazines',
-    'authors'
+    'authors',
   ]
   // Vuex initial entities getters should be added here
   const entitiesCrud = {
     'entities/getEntity': {},
-  };
+  }
   // Vuex initial resources getters should be added here
   const resourcesGetters = {
     'resources/all': initialResourcesRoutes(initialResources),
-  };
+  }
 
   // Vuex auth getters
   const authGetters = {
     'auth/authStatus': 'idle',
     'auth/getUser': '',
-    'auth/isAuthenticated': false
+    'auth/isAuthenticated': false,
   }
 
   // Vuex auth getters
   const requestGetters = {
-    'requests/isLoading': false
+    'requests/isLoading': false,
   }
   /**
    * initResourcesCrud - Given a list of resources, creates mocked vuex crud
@@ -41,14 +41,14 @@ export default () => {
    * @return {Object} An object with mocked vuex crud methods
    */
   function initResourcesCrud(resources) {
-    const crud = {};
+    const crud = {}
     resources.forEach((resource) => {
       crud[`${resource}/byId`] = id => id,
       crud[`${resource}/isError`] = false,
       crud[`${resource}/isLoading`] = false,
-      crud[`${resource}/list`] = [];
-    });
-    return crud;
+      crud[`${resource}/list`] = []
+    })
+    return crud
   }
 
   return {
@@ -56,6 +56,6 @@ export default () => {
     ...initResourcesCrud(initialResources),
     ...entitiesCrud,
     ...resourcesGetters,
-    ...requestGetters
+    ...requestGetters,
   }
 }

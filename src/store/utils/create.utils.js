@@ -1,4 +1,6 @@
-import { submitEntity, initEntity, updateEntity, getEntityForm } from './common.utils'
+import {
+  submitEntity, initEntity, updateEntity, getEntityForm,
+} from './common.utils'
 
 /**
  * Create View Utils - A function used to create utilities
@@ -28,8 +30,8 @@ export default ({
      * @return {Object} a 'resourceName' object with updated data from the form.
      */
   getEntityForm() {
-    const formType = 'createForm';
-    return getEntityForm({ store, resourceName, formType });
+    const formType = 'createForm'
+    return getEntityForm({ store, resourceName, formType })
   },
 
   /**
@@ -40,36 +42,36 @@ export default ({
      * @param {String} value       A given value to be stored
      */
   updateEntity({ resourceKey, value }) {
-    const formType = 'createForm';
+    const formType = 'createForm'
     updateEntity({
       resourceKey,
       value,
       store,
       resourceName,
       formType,
-    });
+    })
   },
 
-    /**
+  /**
      * initEntity - Init the 'resourceName' entity in the store.
      */
-    initEntity() {
-      const formType = 'createForm'
-      initEntity({
-        store,
-        resourceName,
-        formType
-      })
-    },
+  initEntity() {
+    const formType = 'createForm'
+    initEntity({
+      store,
+      resourceName,
+      formType,
+    })
+  },
 
-    /**
+  /**
      * submitEntity - Dispatchs a create request
      *
      * @return {Promise} A pending promise.
      */
   submitEntity() {
-    const actionType = 'create';
-    const actionTypeParams = { data: this.getEntityForm() };
+    const actionType = 'create'
+    const actionTypeParams = { data: this.getEntityForm() }
     submitEntity({
       resourceName,
       actionType,
@@ -79,6 +81,6 @@ export default ({
       redirectView,
       resourceIdName,
       parseResponses,
-    });
+    })
   },
-});
+})

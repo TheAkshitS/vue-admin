@@ -4,7 +4,7 @@ import {
   Edit,
   EditButton,
   List,
-  Show
+  Show,
 } from '@components/Actions'
 import Admin from '@components/Admin'
 import AuthTypes from '@va-auth/types'
@@ -17,8 +17,8 @@ const components = [
   Create, Delete, Edit, EditButton, List, Show,
 ]
 
-const install = function(Vue) {
-  components.forEach(component => {
+const install = function (Vue) {
+  components.forEach((component) => {
     Vue.component(component.name, component)
   })
 }

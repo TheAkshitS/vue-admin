@@ -10,6 +10,6 @@ export default {
   },
   render(createElement, context) {
     return createElement('div', context.children)
-  }
-};
+  },
+}
 </script>

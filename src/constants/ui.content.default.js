@@ -51,4 +51,4 @@ export default {
 
   // Edit Save button
   EDIT_SUBMIT_BUTTON: 'save',
-};
+}

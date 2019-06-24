@@ -1,6 +1,6 @@
 import createActions from './modules/actions'
 import createGetters from './modules/getters'
-import createMutations  from './modules/mutations'
+import createMutations from './modules/mutations'
 import createState from './modules/state'
 import Types from '../types'
 
@@ -30,7 +30,7 @@ export default ({
     }),
 
     mutations: createMutations({
-      types
+      types,
     }),
 
     getters: createGetters(),

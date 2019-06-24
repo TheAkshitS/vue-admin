@@ -10,7 +10,7 @@ describe('Authors: List Test', () => {
   const view = 'list'
   const utils = InitEntityUtils({
     resourceName,
-    view
+    view,
   })
 
   let authors
@@ -21,7 +21,7 @@ describe('Authors: List Test', () => {
   })
 
   before('Sets the authors fixture', () => {
-    cy.fixture(resourceName).then(fixture => {
+    cy.fixture(resourceName).then((fixture) => {
       authors = fixture
     })
   })
@@ -37,27 +37,27 @@ describe('Authors: List Test', () => {
     // Exercise: visits the '/#/authors/' url
     cy.visit(`/#/${resourceName}/`)
     // Assertion: a list of authors is returned
-    cy.wait(`@${resourceName}/${view}`).then(xmlHttpRequest => {
+    cy.wait(`@${resourceName}/${view}`).then((xmlHttpRequest) => {
       authors = xmlHttpRequest.response.body
       const responseData = xmlHttpRequest.response.body
       expect(responseData).not.to.be.empty
       expect(authors.length).to.equal(responseData.length)
       expect(authors).to.deep.equal(responseData)
     })
-   cy.server({ enable: false })
+    cy.server({ enable: false })
   })
 
-   it('Visits the List View', () => {
-     const url = utils.getUrlByResource({ resourceName })
-     cy.url().should('eq', url)
-   })
+  it('Visits the List View', () => {
+    const url = utils.getUrlByResource({ resourceName })
+    cy.url().should('eq', url)
+  })
 
   it('Authors List View should render title', () => {
     const titleContainer = cy.getElement({
       constant: UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE,
       constantParams: { resourceName, view },
       elementType: '',
-      elementProp: 'name'
+      elementProp: 'name',
     })
     const expectedTitleText = UI_CONTENT.RESOURCE_VIEW_TITLE.with({ resourceName })
 
@@ -69,11 +69,11 @@ describe('Authors: List Test', () => {
       constant: UI_NAMES.RESOURCE_CREATE_BUTTON,
       constantParams: { resourceName },
       elementType: 'a',
-      elementProp: 'name'
+      elementProp: 'name',
     })
     const expectedCreateButtonText = UI_CONTENT.RESOURCE_CREATE_BUTTON
 
-    createButtonElement.should('contain',expectedCreateButtonText)
+    createButtonElement.should('contain', expectedCreateButtonText)
   })
 
   it('The list should contain authors with an {id} attribute', () => {
@@ -101,7 +101,7 @@ describe('Authors: List Test', () => {
       constant: UI_NAMES.RESOURCE_CREATE_BUTTON,
       constantParams: { resourceName },
       elementType: 'a',
-      elementProp: 'name'
+      elementProp: 'name',
     })
     const expectedCreateButtonText = UI_CONTENT.RESOURCE_CREATE_BUTTON
 
@@ -130,7 +130,7 @@ describe('Authors: List Test', () => {
       // Setup: Gets the 'index' publisher row
       const row = utils.getTableRowBy({
         field,
-        index: index % rowsPerPage
+        index: index % rowsPerPage,
       })
       // Assertion: the input contains the author issue content
       row.should('contain', element[field])
@@ -142,10 +142,10 @@ describe('Authors: List Test', () => {
       const nextPageButton = cy.getElement({
         constant: '"Next page"',
         elementType: 'button',
-        elementProp: 'aria-label'
+        elementProp: 'aria-label',
       })
       nextPageButton.click()
-      timesNavigatedToNextPage = timesNavigatedToNextPage + 1
+      timesNavigatedToNextPage += 1
     }
   }
 
@@ -154,7 +154,7 @@ describe('Authors: List Test', () => {
       const previousPageButton = cy.getElement({
         constant: '"Previous page"',
         elementType: 'button',
-        elementProp: 'aria-label'
+        elementProp: 'aria-label',
       })
       while (timesNavigatedToNextPage > 0) {
         previousPageButton.click({ multiple: true })

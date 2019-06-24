@@ -1,5 +1,7 @@
 <script>
-import { List, Show, Create, Edit } from '@components/Actions'
+import {
+  List, Show, Create, Edit,
+} from '@components/Actions'
 import { createCrudModule } from '@store/modules'
 import createRouteBindings from '@router/route.bindings'
 import defaults from './defaults'
@@ -26,7 +28,7 @@ export default {
     },
     userPermissionsField: {
       type: String,
-      default: defaults().props.userPermissionsField
+      default: defaults().props.userPermissionsField,
     },
     apiUrl: {
       type: String,
@@ -43,23 +45,23 @@ export default {
       default: defaults().props.parseResponses,
     },
   },
-  created: function() {
+  created() {
     if (!this.storeHasModule(this.name)) {
       createCrudModule({
         apiUrl: this.apiUrl,
         resourceName: this.name,
         resourceIdName: this.resourceIdName,
         parseResponses: this.parseResponses,
-        store: this.$store
+        store: this.$store,
       })
     }
   },
   methods: {
-    addRoute: function(path, name, addedRouteCallback) {
-      const resourceName = "resources/addRoute"
+    addRoute(path, name, addedRouteCallback) {
+      const resourceName = 'resources/addRoute'
       return this.$store.commit(resourceName, { path, name, addedRouteCallback })
     },
-    bindComponentsOnRoutes: function() {
+    bindComponentsOnRoutes() {
       const routes = []
       // Initialises bindings to create the navigation routes
       const bind = createRouteBindings({
@@ -72,13 +74,13 @@ export default {
         userPermissionsField: this.userPermissionsField,
         redirection: this.redirect,
         router: this.$router,
-        parseResponses: this.parseResponses
+        parseResponses: this.parseResponses,
       })
       // Adds binded components to routes
-      routes.push(bind.list({ wrapper: List }));
-      routes.push(bind.show({ wrapper: Show }));
-      routes.push(bind.create({ wrapper: Create }));
-      routes.push(bind.edit({ wrapper: Edit }));
+      routes.push(bind.list({ wrapper: List }))
+      routes.push(bind.show({ wrapper: Show }))
+      routes.push(bind.create({ wrapper: Create }))
+      routes.push(bind.edit({ wrapper: Edit }))
       // Adds the routes to the global router
       this.$router.addRoutes(routes)
     },
@@ -90,13 +92,13 @@ export default {
     },
     storeHasModule(moduleName) {
       return !!this.$store.state[moduleName]
-    }
+    },
   },
   mounted() {
-    this.loadRoutes();
+    this.loadRoutes()
   },
   render() {
-    return null;
+    return null
   },
-};
+}
 </script>

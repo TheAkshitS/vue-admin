@@ -91,9 +91,9 @@
 </template>
 
 <script>
+import AuthActionTypes from '@va-auth/types'
 import UI_CONTENT from '../../../constants/ui.content.default'
 import UI_NAMES from '../../../constants/ui.element.names'
-import AuthActionTypes from '@va-auth/types'
 
 export default {
   name: 'Ui',
@@ -108,22 +108,22 @@ export default {
       menuItems: [
         {
           click: () => {},
-          icon: "keyboard_arrow_up",
-          "icon-alt": "keyboard_arrow_down",
-          title: "Crud",
+          icon: 'keyboard_arrow_up',
+          'icon-alt': 'keyboard_arrow_down',
+          title: 'Crud',
           children: [],
           model: {},
           value: true,
         },
         {
           click: () => this.$store.dispatch(`auth/${AuthActionTypes.AUTH_LOGOUT_REQUEST}`),
-          icon: "power_settings_new",
-          title: "Sign Out",
-        }
+          icon: 'power_settings_new',
+          title: 'Sign Out',
+        },
       ],
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
   mounted() {
     this.mapCurrentRegisteredRoutes()
@@ -131,18 +131,16 @@ export default {
   methods: {
     // Listen to addRoutes mutations
     mapCurrentRegisteredRoutes() {
-      let whitelist = ["resources/addRoute"];
+      const whitelist = ['resources/addRoute']
       this.$store.subscribe((mutation, state) => {
         if (whitelist.includes(mutation.type)) {
-          const currentRoutes = state.resources.routes.map(route => {
-            return { icon: 'list', title: route.name, link: route.path }
-          })
+          const currentRoutes = state.resources.routes.map(route => ({ icon: 'list', title: route.name, link: route.path }))
           this.menuItems[0].children = currentRoutes
         }
-      });
-    }
-  }
-};
+      })
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,12 +1,12 @@
 export default {
   namespaced: true,
   state: {
-    routes: []
+    routes: [],
   },
   mutations: {
     addRoute({ routes }, { path, name, addedRouteCallback }) {
       let matchingPathRouteIndex
-      let newRoute = { path, name }
+      const newRoute = { path, name }
       routes.forEach((route, index) => (route.name === name) && (matchingPathRouteIndex = index))
       if (matchingPathRouteIndex !== undefined) {
         routes[matchingPathRouteIndex] = newRoute
@@ -14,9 +14,9 @@ export default {
         routes.push(newRoute)
         addedRouteCallback()
       }
-    }
+    },
   },
   getters: {
-    all: state => state.routes
-  }
-};
+    all: state => state.routes,
+  },
+}

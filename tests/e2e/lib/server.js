@@ -1,4 +1,4 @@
-import { numbers } from '../factory/utils';
+import { numbers } from '../factory/utils'
 
 /**
  * Anonymous Function - Given a resourceName and a view, initialises the
@@ -13,10 +13,10 @@ export default ({
   routes,
 }) => {
   // Initialises the Cypress server
-  cy.server();
+  cy.server()
   // Gets the {resourceName} fixture
   cy.fixture(resourceName).then((fixture) => {
-    let data = fixture;
+    let data = fixture
 
     // New endpoints should be added here
     const initEndpoints = {
@@ -35,24 +35,24 @@ export default ({
         method: 'GET',
         url: `api/${resourceName}/`,
         response: response || data,
-      }).as(`${resourceName}/list`);
+      }).as(`${resourceName}/list`)
     }
 
     /**
      * createRequest - A stub for POST requests
      */
     function createRequest({ response }) {
-      const entity = response;
-      entity.id = numbers.randomBetween(1, 250000);
+      const entity = response
+      entity.id = numbers.randomBetween(1, 250000)
       cy.route({
         method: 'POST',
         url: `**/api/${resourceName}/`,
         status: 201,
         onRequest: () => {
-          data.push(entity);
+          data.push(entity)
         },
         response: entity,
-      }).as(`${resourceName}/create`);
+      }).as(`${resourceName}/create`)
     }
 
     /**
@@ -65,11 +65,11 @@ export default ({
         response,
         {
           onRequest: () => {
-            data = data.filter(element => response.id !== element.id);
-            data.push(response);
+            data = data.filter(element => response.id !== element.id)
+            data.push(response)
           },
         },
-      ).as(`${resourceName}/update`);
+      ).as(`${resourceName}/update`)
     }
 
     /**
@@ -80,27 +80,27 @@ export default ({
         'GET',
         `api/${resourceName}/${response.id}`,
         response,
-      ).as(`${resourceName}/show/${response.id}`);
+      ).as(`${resourceName}/show/${response.id}`)
     }
 
     /**
      * deleteRequest - A stub for DELETE Many requests
      */
     function deleteRequest({ response }) {
-      const resource = data.find(a => a.id === response.id);
-      const index = data.indexOf(resource);
-      data.splice(index, 1);
+      const resource = data.find(a => a.id === response.id)
+      const index = data.indexOf(resource)
+      data.splice(index, 1)
       cy.route({
         method: 'DELETE',
         url: `api/${resourceName}/${response.id}`,
         response: {},
         status: 202,
-      }).as(`${resourceName}/delete/${response.id}`);
+      }).as(`${resourceName}/delete/${response.id}`)
     }
 
     // Initialises endpoints
     routes.forEach((route) => {
-      initEndpoints[route.name](route);
-    });
-  });
-};
+      initEndpoints[route.name](route)
+    })
+  })
+}

@@ -4,7 +4,7 @@ import {
   getEntityForm,
   submitEntity,
   updateEntity,
-} from './common.utils';
+} from './common.utils'
 
 /**
  * Edit View Utils - A function used to create utilities
@@ -34,8 +34,8 @@ export default ({
      * @return {Object} a 'resourceName' object with updated data from the form.
      */
   getEntityForm() {
-    const formType = 'editForm';
-    return getEntityForm({ store, resourceName, formType });
+    const formType = 'editForm'
+    return getEntityForm({ store, resourceName, formType })
   },
 
   /**
@@ -44,7 +44,7 @@ export default ({
      * @return {Object} A 'resourceName' entity.
      */
   getEntity() {
-    return getEntity({ router, resourceName, store });
+    return getEntity({ router, resourceName, store })
   },
 
   /**
@@ -53,7 +53,7 @@ export default ({
      * @return {Object} A fetched 'resourceName' entity.
      */
   fetchEntity() {
-    return fetchEntity({ resourceName, router, store });
+    return fetchEntity({ resourceName, router, store })
   },
 
   /**
@@ -64,14 +64,14 @@ export default ({
      * @param {String} value       A given value to be stored
      */
   updateEntity({ resourceKey, value }) {
-    const formType = 'editForm';
+    const formType = 'editForm'
     updateEntity({
       resourceKey,
       value,
       store,
       resourceName,
       formType,
-    });
+    })
   },
 
   /**
@@ -80,9 +80,9 @@ export default ({
      * @return {Promise} A pending promise.
      */
   submitEntity() {
-    const { id } = router.history.current.params;
-    const actionType = 'update';
-    const actionTypeParams = { data: this.getEntityForm(), id };
+    const { id } = router.history.current.params
+    const actionType = 'update'
+    const actionTypeParams = { data: this.getEntityForm(), id }
     submitEntity({
       resourceName,
       actionType,
@@ -92,6 +92,6 @@ export default ({
       redirectView,
       resourceIdName,
       parseResponses,
-    });
+    })
   },
-});
+})

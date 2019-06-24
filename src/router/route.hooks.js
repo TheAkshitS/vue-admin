@@ -7,11 +7,11 @@
  * @param {String}    userPermissionsField   The name of the permissions field in a user object
  * @return {type} An object with hook functions
  */
-export default({
+export default ({
   isPublic,
   permissions,
   store,
-  userPermissionsField
+  userPermissionsField,
 }) => {
   const requiresAuth = !isPublic
 
@@ -23,8 +23,8 @@ export default({
       if (!isAuthenticated) {
         // User is not authenticated
         next({
-            path: '/login',
-            params: { nextUrl: to.fullPath }
+          path: '/login',
+          params: { nextUrl: to.fullPath },
         })
       } else {
         // User is authenticated
@@ -33,15 +33,13 @@ export default({
 
           const user = store.getUser()
           const { [userPermissionsField]: userPermissions } = user
-          const userHasPermissions = permissions.some(permission => {
-            return userPermissions.indexOf(permission) > -1
-          })
+          const userHasPermissions = permissions.some(permission => userPermissions.indexOf(permission) > -1)
           if (userHasPermissions) {
             // User is authenticated and has route permissions
             next()
           } else {
             // User is authenticated but does not have route permissions
-            next('/unauthorized');
+            next('/unauthorized')
           }
         } else {
           // Route has no permissions restriction
@@ -55,6 +53,6 @@ export default({
   }
 
   return {
-    beforeEnter
+    beforeEnter,
   }
 }

@@ -31,7 +31,7 @@ export default ({
   userPermissionsField,
   redirection,
   router,
-  parseResponses
+  parseResponses,
 }) => {
   const store = router.app.$store
   const hasShow = !!show
@@ -42,11 +42,11 @@ export default ({
   return {
 
     list: ({ wrapper }) => {
-      const name = `${resourceName}/list`;
+      const name = `${resourceName}/list`
       const utils = listUtils({
         resourceName,
         store,
-      });
+      })
       if (list instanceof Array) {
         // list should be an array based component
         return {
@@ -62,41 +62,41 @@ export default ({
             resourceIdName,
             // This could be refactored into a vue mixin, check #52 - @sgobotta
             va: {
-              ...utils
-            }
-          }
-        }
-      } else {
-        // list is an Object
-        const { component, isPublic, permissions } = list
-        const routeHooks = createRouteHooks({
-          isPublic,
-          permissions,
-          store: authUtils,
-          userPermissionsField
-        })
-        return {
-          path: resourcePath,
-          name,
-          component,
-          props: {
-            resourceName,
-            hasShow,
-            hasCreate,
-            hasEdit,
-            resourceIdName,
-            // This could be refactored into a vue mixin, check #52 - @sgobotta
-            va: {
-              ...utils
-            }
+              ...utils,
+            },
           },
-          meta: {
-            isPublic,
-            permissions
-          },
-          ...routeHooks,
         }
       }
+      // list is an Object
+      const { component, isPublic, permissions } = list
+      const routeHooks = createRouteHooks({
+        isPublic,
+        permissions,
+        store: authUtils,
+        userPermissionsField,
+      })
+      return {
+        path: resourcePath,
+        name,
+        component,
+        props: {
+          resourceName,
+          hasShow,
+          hasCreate,
+          hasEdit,
+          resourceIdName,
+          // This could be refactored into a vue mixin, check #52 - @sgobotta
+          va: {
+            ...utils,
+          },
+        },
+        meta: {
+          isPublic,
+          permissions,
+        },
+        ...routeHooks,
+      }
+
       // list is a Component
       return {
         path: resourcePath,
@@ -113,16 +113,16 @@ export default ({
             ...utils,
           },
         },
-      };
+      }
     },
 
     show: ({ wrapper }) => {
-      const name = `${resourceName}/show`;
+      const name = `${resourceName}/show`
       const utils = showUtils({
         resourceName,
         router,
         store,
-      });
+      })
       if (show instanceof Array) {
         // show should be a VA default component
         return {
@@ -134,37 +134,37 @@ export default ({
             fields: show,
             // This could be refactored into a vue mixin, check #52 - @sgobotta
             va: {
-              ...utils
-            }
-          }
-        }
-      } else {
-        // show is an Object
-        const { component, isPublic, permissions } = show
-        const routeHooks = createRouteHooks({
-          isPublic,
-          permissions,
-          store: authUtils,
-          userPermissionsField
-        })
-        return {
-          path: `${resourcePath}/show/:id`,
-          name,
-          component,
-          props: {
-            resourceName,
-            // This could be refactored into a vue mixin, check #52 - @sgobotta
-            va: {
-              ...utils
-            }
+              ...utils,
+            },
           },
-          meta: {
-            isPublic,
-            permissions
-          },
-          ...routeHooks,
         }
       }
+      // show is an Object
+      const { component, isPublic, permissions } = show
+      const routeHooks = createRouteHooks({
+        isPublic,
+        permissions,
+        store: authUtils,
+        userPermissionsField,
+      })
+      return {
+        path: `${resourcePath}/show/:id`,
+        name,
+        component,
+        props: {
+          resourceName,
+          // This could be refactored into a vue mixin, check #52 - @sgobotta
+          va: {
+            ...utils,
+          },
+        },
+        meta: {
+          isPublic,
+          permissions,
+        },
+        ...routeHooks,
+      }
+
       // show is a user's custom component
       return {
         path: `${resourcePath}/show/:id`,
@@ -177,12 +177,12 @@ export default ({
             ...utils,
           },
         },
-      };
+      }
     },
 
     create: ({ wrapper }) => {
-      const name = `${resourceName}/create`;
-      const redirectView = redirection.views.create;
+      const name = `${resourceName}/create`
+      const redirectView = redirection.views.create
       const utils = createUtils({
         redirectView,
         resourceIdName,
@@ -190,7 +190,7 @@ export default ({
         router,
         store,
         parseResponses,
-      });
+      })
       if (create instanceof Array) {
         // create should be a VA default component
         return {
@@ -201,37 +201,37 @@ export default ({
             resourceName,
             fields: create,
             va: {
-              ...utils
-            }
-          }
-        }
-      } else {
-        // create is an Object
-        const { component, isPublic, permissions } = create
-        const routeHooks = createRouteHooks({
-          isPublic,
-          permissions,
-          store: authUtils,
-          userPermissionsField
-        })
-        return {
-          path: `${resourcePath}/create`,
-          name,
-          component,
-          props: {
-            // This could be refactored into a vue mixin, check #52 - @sgobotta
-            resourceName,
-            va: {
-              ...utils
-            }
+              ...utils,
+            },
           },
-          meta: {
-            isPublic,
-            permissions
-          },
-          ...routeHooks
         }
       }
+      // create is an Object
+      const { component, isPublic, permissions } = create
+      const routeHooks = createRouteHooks({
+        isPublic,
+        permissions,
+        store: authUtils,
+        userPermissionsField,
+      })
+      return {
+        path: `${resourcePath}/create`,
+        name,
+        component,
+        props: {
+          // This could be refactored into a vue mixin, check #52 - @sgobotta
+          resourceName,
+          va: {
+            ...utils,
+          },
+        },
+        meta: {
+          isPublic,
+          permissions,
+        },
+        ...routeHooks,
+      }
+
       // create is a user's custom component
       return {
         path: `${resourcePath}/create`,
@@ -244,12 +244,12 @@ export default ({
             ...utils,
           },
         },
-      };
+      }
     },
 
     edit: ({ wrapper }) => {
-      const name = `${resourceName}/edit`;
-      const redirectView = redirection.views.edit;
+      const name = `${resourceName}/edit`
+      const redirectView = redirection.views.edit
       const utils = editUtils({
         redirectView,
         resourceIdName,
@@ -257,7 +257,7 @@ export default ({
         router,
         store,
         parseResponses,
-      });
+      })
       if (edit instanceof Array) {
         // edit should be a VA default component
         return {
@@ -268,37 +268,37 @@ export default ({
             resourceName,
             fields: edit,
             va: {
-              ...utils
-            }
-          }
-        }
-      } else {
-        // edit is an Object
-        const { component, isPublic, permissions } = edit
-        const routeHooks = createRouteHooks({
-          isPublic,
-          permissions,
-          store: authUtils,
-          userPermissionsField
-        })
-        return {
-          path: `${resourcePath}/edit/:id`,
-          name,
-          component,
-          // This could be refactored into a vue mixin, check #52 - @sgobotta
-          props: {
-            resourceName,
-            va: {
-              ...utils
-            }
+              ...utils,
+            },
           },
-          meta: {
-            isPublic,
-            permissions
-          },
-          ...routeHooks
         }
       }
+      // edit is an Object
+      const { component, isPublic, permissions } = edit
+      const routeHooks = createRouteHooks({
+        isPublic,
+        permissions,
+        store: authUtils,
+        userPermissionsField,
+      })
+      return {
+        path: `${resourcePath}/edit/:id`,
+        name,
+        component,
+        // This could be refactored into a vue mixin, check #52 - @sgobotta
+        props: {
+          resourceName,
+          va: {
+            ...utils,
+          },
+        },
+        meta: {
+          isPublic,
+          permissions,
+        },
+        ...routeHooks,
+      }
+
       // edit is a user's custom component
       return {
         path: `${resourcePath}/edit/:id`,
@@ -311,7 +311,7 @@ export default ({
             ...utils,
           },
         },
-      };
+      }
     },
-  };
-};
+  }
+}

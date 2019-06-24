@@ -24,9 +24,9 @@ export default () => {
       sortable: 'sortable',
       source: 'label',
     },
-  };
+  }
 
   return {
     composer,
-  };
-};
+  }
+}

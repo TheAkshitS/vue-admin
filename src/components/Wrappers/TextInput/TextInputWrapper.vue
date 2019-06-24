@@ -7,10 +7,10 @@ export default {
 
   },
   data() {
-    return {};
+    return {}
   },
   render(createElement, context) {
-    return createElement('div', context.children);
+    return createElement('div', context.children)
   },
-};
+}
 </script>

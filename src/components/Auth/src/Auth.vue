@@ -74,25 +74,25 @@ export default {
       email: '',
       emailRules: [
         v => !!v || AUTH_ALERT_EMAIL_REQUIRED,
-        v =>  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(v) || AUTH_ALERT_INVALID_EMAIL
+        v => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(v) || AUTH_ALERT_INVALID_EMAIL,
       ],
       passwordRules: [
         v => !!v || AUTH_ALERT_PASSWORD_REQUIRED,
       ],
       password: '',
       UI_NAMES,
-      UI_CONTENT
+      UI_CONTENT,
     }
   },
 
   methods: {
-    validate () {
+    validate() {
       if (this.$refs.form.validate()) {
         const params = { username: this.email, password: this.password }
         this.$store.dispatch(`auth/${AuthTypes.AUTH_LOGIN_REQUEST}`, params)
       }
     },
-  }
+  },
 }
 </script>
 

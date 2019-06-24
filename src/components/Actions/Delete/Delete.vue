@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import UI_CONTENT from '@constants/ui.content.default';
-import UI_NAMES from '@constants/ui.element.names';
+import UI_CONTENT from '@constants/ui.content.default'
+import UI_NAMES from '@constants/ui.element.names'
 
 export default {
   name: 'Delete',
@@ -40,15 +40,15 @@ export default {
     return {
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
 
   methods: {
     onDelete() {
-      const resourceName = `${this.resourceName}/destroy`;
-      this.$store.dispatch(resourceName, { id: this.resourceId });
-      return this.$router.push({ path: `/${this.resourceName}` });
+      const resourceName = `${this.resourceName}/destroy`
+      this.$store.dispatch(resourceName, { id: this.resourceId })
+      return this.$router.push({ path: `/${this.resourceName}` })
     },
   },
-};
+}
 </script>

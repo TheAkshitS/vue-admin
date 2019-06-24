@@ -12,25 +12,25 @@ export default ({ snapshot = 'default' }) => {
   const snapshots = {
     default: initDefaultMutations,
     Resource: initMutationsForResource,
-  };
+  }
   const resourcesMutations = {
     'resources/addRoute': (state, args) => {
       args.addedRouteCallback && args.addedRouteCallback()
-    }
+    },
   }
 
   // Initialises default mutations
   function initDefaultMutations() {
     return {
       ...resourcesMutations,
-    };
+    }
   }
   // Initialises mutations for a Resource component
   function initMutationsForResource() {
     return {
       ...resourcesMutations,
-    };
+    }
   }
 
-  return snapshots[snapshot]();
-};
+  return snapshots[snapshot]()
+}

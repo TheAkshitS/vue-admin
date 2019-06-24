@@ -34,9 +34,9 @@
 <script>
 import UI_CONTENT from '@constants/ui.content.default'
 import UI_NAMES from '@constants/ui.element.names'
-import { mapState } from "vuex";
-import { Input, TextField, Spinner } from "../../UiComponents"
-import { EditButton, Delete } from "../../Actions";
+import { mapState } from 'vuex'
+import { Input, TextField, Spinner } from '../../UiComponents'
+import { EditButton, Delete } from '..'
 
 export default {
   name: 'Show',
@@ -61,55 +61,55 @@ export default {
       view: 'show',
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
 
   computed: {
     resourceShow() {
-      return this.va.getEntity();
+      return this.va.getEntity()
     },
 
     ...mapState([
-      "route" // vuex-router-sync
+      'route', // vuex-router-sync
     ]),
 
     isLoading() {
       return this.$store.getters['requests/isLoading']
-    }
+    },
   },
 
   components: {
-    Input: Input,
-    TextField: TextField,
-    Delete: Delete,
-    EditButton: EditButton,
-    Spinner
+    Input,
+    TextField,
+    Delete,
+    EditButton,
+    Spinner,
   },
 
   methods: {
     fetchData() {
-      return this.va.fetchEntity();
+      return this.va.fetchEntity()
     },
 
     type(type) {
-      return type || 'TextField';
+      return type || 'TextField'
     },
 
     key(label) {
-      return `${this.resourceName}_${label}`;
+      return `${this.resourceName}_${label}`
     },
 
     label(field) {
-      return field.label || field;
+      return field.label || field
     },
 
     args(field) {
-      const args = typeof (field) === 'string' ? { label: field } : field;
-      return args;
+      const args = typeof (field) === 'string' ? { label: field } : field
+      return args
     },
 
     componentName(field) {
-      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName: this.resourceName, view: this.view, field: this.label(field) });
+      return UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD.with({ resourceName: this.resourceName, view: this.view, field: this.label(field) })
     },
   },
 
@@ -118,7 +118,7 @@ export default {
   },
 
   created() {
-    this.fetchData();
+    this.fetchData()
   },
-};
+}
 </script>

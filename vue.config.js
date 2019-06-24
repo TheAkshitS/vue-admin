@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   configureWebpack: {
@@ -15,10 +15,10 @@ module.exports = {
         '@store': path.resolve(__dirname, 'src/store'),
         '@templates': path.resolve(__dirname, 'src/templates/src'),
         '@va-auth': path.resolve(__dirname, 'src/va-auth/src'),
-        '@validators': path.resolve(__dirname, 'src/validators/src')
-      }
-    }
+        '@validators': path.resolve(__dirname, 'src/validators/src'),
+      },
+    },
   },
   lintOnSave: false,
 
-};
+}

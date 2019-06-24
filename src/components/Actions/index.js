@@ -1,9 +1,9 @@
-import Create from './Create';
-import Delete from './Delete';
-import Edit from './Edit';
-import EditButton from './EditButton';
-import List from './List';
-import Show from './Show';
+import Create from './Create'
+import Delete from './Delete'
+import Edit from './Edit'
+import EditButton from './EditButton'
+import List from './List'
+import Show from './Show'
 
 export {
   Create,
@@ -12,4 +12,4 @@ export {
   EditButton,
   List,
   Show,
-};
+}

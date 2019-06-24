@@ -17,9 +17,9 @@ export default () => {
       placeHolder: 'placeHolder',
       source: 'label',
     },
-  };
+  }
 
   return {
     composer,
-  };
-};
+  }
+}

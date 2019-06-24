@@ -2,7 +2,6 @@ const Factory = require('../../factory')
 const UI_NAMES = require('../../../../src/constants/ui.element.names')
 
 describe('Spinner on a Edit View Test', () => {
-
   const resourceName = 'articles'
   const view = 'edit'
   const article = {}
@@ -13,7 +12,7 @@ describe('Spinner on a Edit View Test', () => {
   })
 
   before('Search an article to edit', () => {
-    cy.fixture(resourceName).then(fixture => {
+    cy.fixture(resourceName).then((fixture) => {
       Object.assign(article, fixture[0])
       newArticle.id = article.id
     })
@@ -23,7 +22,7 @@ describe('Spinner on a Edit View Test', () => {
     const response = article
     const routes = [
       { name: 'edit', response },
-      { name: 'show', response }
+      { name: 'show', response },
     ]
 
     cy.InitServer({ resourceName, routes })
@@ -38,7 +37,7 @@ describe('Spinner on a Edit View Test', () => {
     const spinnerContainer = cy.getElement({
       constant: UI_NAMES.SPINNER_CONTAINER,
       elementType: 'div',
-      elementProp: 'id'
+      elementProp: 'id',
     })
 
     spinnerContainer.should('not.be.visible')
@@ -51,10 +50,9 @@ describe('Spinner on a Edit View Test', () => {
     const spinnerContainer = cy.getElement({
       constant: UI_NAMES.SPINNER_CONTAINER,
       elementType: 'div',
-      elementProp: 'id'
+      elementProp: 'id',
     })
 
     spinnerContainer.should('be.visible')
   })
-
 })

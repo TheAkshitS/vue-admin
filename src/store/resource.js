@@ -8,10 +8,10 @@ export default {
       routes.push({
         path: payload.path,
         name: payload.name,
-      });
+      })
     },
   },
   getters: {
     all: state => state.routes,
   },
-};
+}

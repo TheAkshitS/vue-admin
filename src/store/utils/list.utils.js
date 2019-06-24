@@ -1,4 +1,4 @@
-import { fetchList, getList } from './common.utils';
+import { fetchList, getList } from './common.utils'
 
 /**
  * List View Utils - A function used to create utilities
@@ -18,7 +18,7 @@ export default ({
      * @return {Array} An array of 'resourceName' elements
      */
   fetchList() {
-    return fetchList({ resourceName, store });
+    return fetchList({ resourceName, store })
   },
 
   /**
@@ -27,6 +27,6 @@ export default ({
      * @return {Array} An array of 'resourceName' elements
      */
   getList() {
-    return getList({ resourceName, store });
+    return getList({ resourceName, store })
   },
-});
+})

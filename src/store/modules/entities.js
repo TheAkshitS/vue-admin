@@ -7,13 +7,15 @@ export default {
   namespaced: true,
   state: {},
   mutations: {
-    updateForm(state, { formType, entity, resourceKey, value }) {
+    updateForm(state, {
+      formType, entity, resourceKey, value,
+    }) {
       initForm(state, { formType, entity })
       state[formType][entity][resourceKey] = value
     },
-    initForm
+    initForm,
   },
   getters: {
-    getEntity: state => state
-  }
+    getEntity: state => state,
+  },
 }

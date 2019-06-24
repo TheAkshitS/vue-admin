@@ -29,4 +29,4 @@ module.exports = {
   ],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testURL: 'http://localhost/',
-};
+}

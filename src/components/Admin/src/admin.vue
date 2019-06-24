@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import Core from "@components/Core";
-import Ui from "@components/Ui";
+import Core from '@components/Core'
+import Ui from '@components/Ui'
 import Unauthorized from '@components/Unauthorized'
-import resourceModule from "@store/modules/resource";
-import entitiesModule from "@store/modules/entities"
-import requestsModule from "@store/modules/requests"
+import resourceModule from '@store/modules/resource'
+import entitiesModule from '@store/modules/entities'
+import requestsModule from '@store/modules/requests'
 import createAuthModule from '@va-auth/store'
 import UI_CONTENT from '@constants/ui.content.default'
 import Auth from '@components/Auth'
@@ -34,19 +34,19 @@ export default {
       default: () => Ui,
     },
     authLayout: {
-      default: () => Auth
+      default: () => Auth,
     },
     authProvider: {
       type: Function,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      default: UI_CONTENT.MAIN_TOOLBAR_TITLE
+      default: UI_CONTENT.MAIN_TOOLBAR_TITLE,
     },
     unauthorized: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   components: {
     Auth,
@@ -57,10 +57,10 @@ export default {
     this.$store.registerModule('resources', resourceModule)
     this.$store.registerModule('entities', entitiesModule)
     this.$store.registerModule('requests', requestsModule)
-    this.registerUnauthorizedIfAny(this.unauthorized);
+    this.registerUnauthorizedIfAny(this.unauthorized)
     this.registerStoreModule()
   },
-  mounted: function() {
+  mounted() {
     this.loadAuthRoutes()
     this.$store.dispatch(`auth/${AuthActionTypes.AUTH_CHECK_REQUEST}`)
   },
@@ -78,7 +78,7 @@ export default {
         path: '/login',
         name: 'login',
         component: Auth,
-        props: {}
+        props: {},
       }
       routes.push(route)
       this.$router.addRoutes(routes)
@@ -87,20 +87,20 @@ export default {
       const routeForUnauthorized = {
         path: '/unauthorized',
         name: 'unauthorized',
-        component: unauthorizedComponent || Unauthorized
+        component: unauthorizedComponent || Unauthorized,
       }
-      this.$router.addRoutes([routeForUnauthorized]);
-    }
+      this.$router.addRoutes([routeForUnauthorized])
+    },
   },
   computed: {
     isAuthenticated() {
-      return this.$store.getters[`auth/isAuthenticated`]
-    }
+      return this.$store.getters['auth/isAuthenticated']
+    },
   },
   render() {
     return null
-  }
-};
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -6,26 +6,24 @@
  * @return {Object} A set of functions to be used in an Edit form.
  */
 export default ({
-  store
-}) => {
-  return {
+  store,
+}) => ({
 
-    /**
+  /**
      * checkAuthentication - Indicates whether the user is authenticated or not.
      *
      * @return {Boolean}
      */
-    isAuthenticated() {
-      return store.getters['auth/isAuthenticated']
-    },
+  isAuthenticated() {
+    return store.getters['auth/isAuthenticated']
+  },
 
-    /**
+  /**
      * getUser - Returns the user object from the store
      *
      * @return {Object} The current logged user object
      */
-    getUser() {
-      return store.getters['auth/getUser']
-    },
-  }
-}
+  getUser() {
+    return store.getters['auth/getUser']
+  },
+})

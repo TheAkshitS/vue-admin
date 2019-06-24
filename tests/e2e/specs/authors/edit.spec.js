@@ -5,7 +5,6 @@ const UI_CONTENT = require('../../../../src/constants/ui.content.default')
 const UI_NAMES = require('../../../../src/constants/ui.element.names')
 
 describe('Authors: Edit Test', () => {
-
   const resourceName = 'authors'
   const view = 'edit'
   const author = {}
@@ -17,7 +16,7 @@ describe('Authors: Edit Test', () => {
   })
 
   before('Search an author to edit', () => {
-    cy.fixture(resourceName).then(fixture => {
+    cy.fixture(resourceName).then((fixture) => {
       Object.assign(author, fixture[0])
       newAuthor.id = author.id
     })
@@ -27,7 +26,7 @@ describe('Authors: Edit Test', () => {
     const response = author
     const routes = [
       { name: 'edit', response },
-      { name: 'show', response }
+      { name: 'show', response },
     ]
 
     cy.InitServer({ resourceName, routes })
@@ -41,7 +40,7 @@ describe('Authors: Edit Test', () => {
       constant: UI_NAMES.RESOURCE_VIEW_CONTAINER_TITLE,
       constantParams: { resourceName, view },
       elementType: 'div',
-      elementProp: 'name'
+      elementProp: 'name',
     })
 
     editViewTitleContainer.should('contain', editViewTitleText)
@@ -77,14 +76,14 @@ describe('Authors: Edit Test', () => {
   it('An author is updated when the user submits the form', () => {
     const routes = [
       { name: view, response: newAuthor },
-      { name: 'show', response: newAuthor }
+      { name: 'show', response: newAuthor },
     ]
     cy.InitServer({ resourceName, routes })
 
     const button = utils.getSubmitButton({ submitType: view })
     button.click()
 
-    cy.wait(`@${resourceName}/update`).then(xmlHttpRequest => {
+    cy.wait(`@${resourceName}/update`).then((xmlHttpRequest) => {
       const _newArticle = xmlHttpRequest.response.body
       expect(_newArticle).to.deep.equal(newAuthor)
       cy.url().should('include', `/${resourceName}/show/${_newArticle.id}`)
@@ -94,7 +93,7 @@ describe('Authors: Edit Test', () => {
 
   /**
   * Helper functions
-  **/
+  * */
 
   function editField(field, content) {
     queryToField(field)
@@ -108,7 +107,7 @@ describe('Authors: Edit Test', () => {
       constant: UI_NAMES.RESOURCE_VIEW_CONTAINER_FIELD,
       constantParams: { resourceName, view, field },
       elementType: 'input',
-      elementProp: 'name'
+      elementProp: 'name',
     })
   }
 

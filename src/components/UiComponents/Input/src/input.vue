@@ -24,14 +24,14 @@ export default {
   data() {
     return {
       inputValue: this.value,
-    };
+    }
   },
   watch: {
     inputValue(newVal) {
-      this.$emit('change', newVal);
+      this.$emit('change', newVal)
     },
   },
   computed: {
   },
-};
+}
 </script>

@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import UI_CONTENT from '@constants/ui.content.default';
-import UI_NAMES from '@constants/ui.element.names';
+import UI_CONTENT from '@constants/ui.content.default'
+import UI_NAMES from '@constants/ui.element.names'
 
 export default {
   name: 'EditButton',
@@ -42,12 +42,12 @@ export default {
     return {
       UI_CONTENT,
       UI_NAMES,
-    };
+    }
   },
   methods: {
     onEdit() {
-      this.$router.push({ name: `${this.resourceName}/edit`, params: { id: this.resourceId } });
+      this.$router.push({ name: `${this.resourceName}/edit`, params: { id: this.resourceId } })
     },
   },
-};
+}
 </script>

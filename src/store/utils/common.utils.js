@@ -1,4 +1,4 @@
-import Router from '@router';
+import Router from '@router'
 
 /**
  * getEntityForm - Given a resource name and a form type, calls the store to get the
@@ -11,7 +11,7 @@ import Router from '@router';
  *
  * @return {Object} a 'resourceName' object with updated data from the form.
  */
-export const getEntityForm = ({ resourceName, formType, store }) => store.state.entities[formType][resourceName];
+export const getEntityForm = ({ resourceName, formType, store }) => store.state.entities[formType][resourceName]
 
 /**
  * getEntity - Given a resource name, calls the store to get a single element.
@@ -23,10 +23,10 @@ export const getEntityForm = ({ resourceName, formType, store }) => store.state.
  * @return {Object} A 'resourceName' entity.
  */
 export const getEntity = ({ resourceName, store, router }) => {
-  const { id } = router.history.current.params;
-  const moduleName = `${resourceName}/byId`;
-  return store.getters[moduleName](id);
-};
+  const { id } = router.history.current.params
+  const moduleName = `${resourceName}/byId`
+  return store.getters[moduleName](id)
+}
 
 /**
  * fetchEntity - Given a resource name, calls the store to dispatch a single get
@@ -39,10 +39,10 @@ export const getEntity = ({ resourceName, store, router }) => {
  * @return {Object} The fetched entity.
  */
 export const fetchEntity = ({ resourceName, store, router }) => {
-  const { id } = router.history.current.params;
-  const moduleName = `${resourceName}/fetchSingle`;
-  return store.dispatch(moduleName, { id });
-};
+  const { id } = router.history.current.params
+  const moduleName = `${resourceName}/fetchSingle`
+  return store.dispatch(moduleName, { id })
+}
 
 /**
  * fetchList - Given a resource name, calls the store to dispatch a get request
@@ -53,9 +53,9 @@ export const fetchEntity = ({ resourceName, store, router }) => {
  * @return {Array} A 'resourceName' list from the Vuex Crud store
  */
 export const fetchList = ({ resourceName, store }) => {
-  const moduleName = `${resourceName}/fetchList`;
-  return store.dispatch(moduleName);
-};
+  const moduleName = `${resourceName}/fetchList`
+  return store.dispatch(moduleName)
+}
 
 /**
  * getList - Given a resource name, calls the store to get the current
@@ -67,9 +67,9 @@ export const fetchList = ({ resourceName, store }) => {
  * @return {Array} A 'resourceName' list from the Vuex Crud store
  */
 export const getList = ({ resourceName, store }) => {
-  const moduleName = `${resourceName}/list`;
-  return store.getters[moduleName];
-};
+  const moduleName = `${resourceName}/list`
+  return store.getters[moduleName]
+}
 
 /**
  * updateEntity - Given a key and a value, calls the store to update the
@@ -89,12 +89,12 @@ export const updateEntity = ({
   resourceName,
   formType,
 }) => {
-  const moduleName = 'entities/updateForm';
-  const entity = resourceName;
+  const moduleName = 'entities/updateForm'
+  const entity = resourceName
   store.commit(moduleName, {
     formType, value, resourceKey, entity,
-  });
-};
+  })
+}
 
 /**
  * initEntity - Calls the store to init the 'resourceName' entity.
@@ -107,11 +107,11 @@ export const updateEntity = ({
 export const initEntity = ({
   store,
   resourceName,
-  formType
+  formType,
 }) => {
   const moduleName = 'entities/initForm'
   const entity = resourceName
-  store.commit(moduleName, { formType, entity });
+  store.commit(moduleName, { formType, entity })
 }
 
 /**
@@ -140,28 +140,28 @@ export const submitEntity = ({
   resourceIdName,
   parseResponses,
 }) => {
-  const moduleName = `${resourceName}/${actionType}`;
+  const moduleName = `${resourceName}/${actionType}`
   return store.dispatch(moduleName, actionTypeParams)
     .then((res) => {
-      const { status } = res;
+      const { status } = res
       // NOTE - Maybe in the future we want to delete the remaining data in
       // the store if the creation went Ok, though it could be useful to
       // keep it if we want to implement an Undo feature - @sgobotta
       if (redirectView && [200, 201].indexOf(status) !== -1) {
         const parsedResponse = parseResponses.parseSingle
           ? parseResponses.parseSingle(res)
-          : res;
-        const id = parsedResponse.data[resourceIdName];
-        const resource = resourceName;
-        const view = redirectView;
+          : res
+        const id = parsedResponse.data[resourceIdName]
+        const resource = resourceName
+        const view = redirectView
         Router.redirect({
           router, resource, view, id,
-        });
+        })
       }
-      return res;
+      return res
     })
     .catch((err) => {
     // eslint-disable-next-line no-console
-      console.error(err);
-    });
-};
+      console.error(err)
+    })
+}
